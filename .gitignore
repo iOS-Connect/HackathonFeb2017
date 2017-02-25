@@ -20,7 +20,7 @@ xcuserdata/
 ## Other
 *.moved-aside
 *.xcuserstate
-
+Pods/
 ## Obj-C/Swift specific
 *.hmap
 *.ipa
