@@ -13,6 +13,12 @@ class Clip {
     var end_time: Int?
     var thumbnail_url: String?
     
+    init(dict: NSDictionary) {
+        self.start_time = dict["start_time"] as! Int
+        self.end_time = dict["end_time"] as! Int
+        self.thumbnail_url = dict["thumbnail_url"] as! String
+    }
+    
     init(json: SwiftyJSON.JSON) {
         self.start_time = json["start_time"].int
         self.end_time = json["end_time"].int

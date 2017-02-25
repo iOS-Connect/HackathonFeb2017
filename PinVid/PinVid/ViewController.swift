@@ -10,19 +10,36 @@ import UIKit
 import Firebase
 
 class ViewController: UIViewController {
-    var ref: FIRDatabaseReference!
     override func viewDidLoad() {
         super.viewDidLoad()
-        ref = FIRDatabase.database().reference()
-        self.ref.child("users/123/username").setValue("max")
-        ref.child("title").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let dict = snapshot.value as? NSDictionary {
-                print(dict)
-            }
-        }) { (err) in
-            print("error: \(err)")
-        }
+        
+        let montage1 = Montage()
+        montage1.author = "Kei Sakaguchi"
+        montage1.desc = "This is a test."
+        montage1.title = "Kei goes to Dev Camp!"
+        montage1.montage_id = "1234ABCD"
 
+        let montage2 = Montage()
+        montage2.author = "Max"
+        montage2.desc = "This is another test."
+        montage2.title = "MAX!"
+        montage2.montage_id = "1111AAAA"
+        
+        Montage.addMontage(montage: montage1, user_id: "KEI123") { error in
+            if error != nil {
+                print("fail")
+                return
+            }
+            print("yay, it worked")
+        }
+        
+        Montage.addMontage(montage: montage2, user_id: "MAX123") { error in
+            if error != nil {
+                print("fail")
+                return
+            }
+            print("yay, it worked")
+        }
     }
 
     override func didReceiveMemoryWarning() {
