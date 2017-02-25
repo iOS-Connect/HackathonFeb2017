@@ -16,6 +16,8 @@
 		0D388AEC1E620CAE00502510 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0D388AEB1E620CAE00502510 /* ReadMe.txt */; };
 		4D4CE77DEBE357C886DE0D06 /* Pods_PinVid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */; };
 		8E4C685D241BE0CD5FECE7ED /* Pods_PinVidUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */; };
+		AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58BAB51E621A8B0046EF0F /* Montage.swift */; };
+		AA58BAB81E621A930046EF0F /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58BAB71E621A930046EF0F /* Clip.swift */; };
 		D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139D6F61E6151C00061F6E8 /* AppDelegate.swift */; };
 		D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139D6F81E6151C00061F6E8 /* ViewController.swift */; };
 		D139D6FC1E6151C00061F6E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D139D6FA1E6151C00061F6E8 /* Main.storyboard */; };
@@ -63,6 +65,8 @@
 		48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinVid.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DAE110BCACF1472ADABDABC /* Pods-PinVidUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidUITests/Pods-PinVidUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		64E011B231D99B727A8D0478 /* Pods-PinVidTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidTests/Pods-PinVidTests.debug.xcconfig"; sourceTree = "<group>"; };
+		AA58BAB51E621A8B0046EF0F /* Montage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Montage.swift; sourceTree = "<group>"; };
+		AA58BAB71E621A930046EF0F /* Clip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clip.swift; sourceTree = "<group>"; };
 		B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinVidUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CEE411F773A7A02331E45FA8 /* Pods-PinVid.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVid.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PinVid/Pods-PinVid.debug.xcconfig"; sourceTree = "<group>"; };
 		D139D6F31E6151C00061F6E8 /* PinVid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinVid.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +180,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AA58BAB41E621A670046EF0F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA58BAB71E621A930046EF0F /* Clip.swift */,
+				AA58BAB51E621A8B0046EF0F /* Montage.swift */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+
+		};
 		D139D6EA1E6151C00061F6E8 = {
 			isa = PBXGroup;
 			children = (
@@ -201,6 +216,7 @@
 		D139D6F51E6151C00061F6E8 /* PinVid */ = {
 			isa = PBXGroup;
 			children = (
+				AA58BAB41E621A670046EF0F /* Models */,
 				0D388AEA1E620C8B00502510 /* Services */,
 				0D388AE51E620C5800502510 /* CreatClips */,
 				0D388ADC1E620B9700502510 /* Auth */,
@@ -527,9 +543,11 @@
 				F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */,
 				D139D6FF1E6151C00061F6E8 /* PinVid.xcdatamodeld in Sources */,
 				D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */,
+				AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */,
 				D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */,
 				F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */,
 				F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */,
+				AA58BAB81E621A930046EF0F /* Clip.swift in Sources */,
 				0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */,
 				0D388AE71E620C7700502510 /* CreateClipsViewController.swift in Sources */,
 			);
