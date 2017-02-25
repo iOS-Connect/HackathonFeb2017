@@ -13,7 +13,7 @@ class CreateClipsViewController: UIViewController {
     var url:NSURL!
     var startTime:Int!
     
-    var videoView = VideoView()
+    var videoView: VideoView!
     var scrubberView = ScrubberView()
     var clipsView = ClipsView()
     
@@ -28,6 +28,7 @@ class CreateClipsViewController: UIViewController {
     }
     
     func setupView() {
+        videoView = VideoView(frame: .zero)
         videoView.translatesAutoresizingMaskIntoConstraints = false
         videoView.backgroundColor = UIColor.orange
         self.view.addSubview(videoView)
