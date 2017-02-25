@@ -10,26 +10,45 @@ import UIKit
 
 class CreateClipsViewController: UIViewController {
 
+    var url:NSURL!
+    var startTime:Int!
+    
+    var videoView = VideoView()
+    var scrubberView = ScrubberView()
+    var clipsView = ClipsView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        videoView.translatesAutoresizingMaskIntoConstraints = false
+        videoView.backgroundColor = UIColor.orange
+        self.view.addSubview(videoView)
+        
+        scrubberView.translatesAutoresizingMaskIntoConstraints = false
+        scrubberView.backgroundColor = UIColor.cyan
+        self.view.addSubview(scrubberView)
+        
+        clipsView.translatesAutoresizingMaskIntoConstraints = false
+        clipsView.backgroundColor = UIColor.lightGray
+        self.view.addSubview(clipsView)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillLayoutSubviews() {
+        videoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        videoView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        videoView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        videoView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
+        
+        scrubberView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        scrubberView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        scrubberView.topAnchor.constraint(equalTo: videoView.bottomAnchor).isActive = true
+        scrubberView.bottomAnchor.constraint(equalTo: clipsView.topAnchor).isActive = true
+        
+        clipsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        clipsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        clipsView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 5).isActive = true
+        clipsView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
+        
     }
-    */
 
 }
