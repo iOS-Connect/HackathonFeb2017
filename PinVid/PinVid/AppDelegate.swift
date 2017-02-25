@@ -9,16 +9,18 @@
 import UIKit
 import CoreData
 import Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        route()
         return true
     }
 
@@ -90,6 +92,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
+
+extension AppDelegate {
+    func route() {
+        let vc: UIViewController!
+        //show login if not registered.
+        if let user = FIRAuth.auth()?.currentUser {
+            let storyboard = UIStoryboard(name: "ProfileList", bundle: nil)
+            vc = storyboard.instantiateViewController(withIdentifier: "ProfileListViewController")
+            
+            let userid = user.uid
+            UserDefaults.standard.set(userid, forKey: "kUserId")
+            UserDefaults.standard.synchronize()
+        } else {
+            let storyboard = UIStoryboard(name: "Auth", bundle: nil)
+            vc = storyboard.instantiateViewController(withIdentifier: "EmailViewController")
+
+        }
+        (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
+    }
+    
+}
+
+@objc protocol AuthDelegate {
+    func didLogin(_ user: FIRUser)
+}
+
+extension AppDelegate: AuthDelegate {
+    func didLogin(_ user: FIRUser) {
+        route()
+    }
+}
+
 

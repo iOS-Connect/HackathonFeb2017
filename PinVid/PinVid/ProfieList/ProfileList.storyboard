@@ -12,7 +12,7 @@
         <!--Profile List View Controller-->
         <scene sceneID="EaK-5Q-Z2R">
             <objects>
-                <viewController storyboardIdentifier="AuthViewController" id="ded-cl-Dq1" customClass="ProfileListViewController" customModule="PinVid" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileListViewController" id="ded-cl-Dq1" customClass="ProfileListViewController" customModule="PinVid" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tM1-pV-BxI"/>
                         <viewControllerLayoutGuide type="bottom" id="Eaa-GU-V1q"/>

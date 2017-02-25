@@ -49,10 +49,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wem-bm-Ltl">
+                                <rect key="frame" x="28" y="327" width="44" height="30"/>
+                                <state key="normal" title="logout"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ih4-S2-Z3k"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E0T-EU-UK7" firstAttribute="leading" secondItem="0Gb-QZ-eib" secondAttribute="leading" id="4dO-31-lAP"/>
+                            <constraint firstItem="Wem-bm-Ltl" firstAttribute="top" secondItem="E0T-EU-UK7" secondAttribute="bottom" constant="8" id="9kn-CZ-lul"/>
                             <constraint firstItem="dDD-4N-Zso" firstAttribute="leading" secondItem="0Gb-QZ-eib" secondAttribute="leading" id="BXq-Xs-erd"/>
                             <constraint firstItem="0Gb-QZ-eib" firstAttribute="top" secondItem="s66-jq-ufu" secondAttribute="bottom" constant="8" id="C3e-7P-m2r"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0Gb-QZ-eib" secondAttribute="leading" id="EYC-n5-Zio"/>
@@ -61,6 +69,7 @@
                             <constraint firstItem="E0T-EU-UK7" firstAttribute="top" secondItem="dDD-4N-Zso" secondAttribute="bottom" constant="8" id="T9U-sL-AYr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s66-jq-ufu" secondAttribute="trailing" constant="33" id="WHO-LA-9aG"/>
                             <constraint firstAttribute="leadingMargin" secondItem="s66-jq-ufu" secondAttribute="leading" id="eML-QG-nwE"/>
+                            <constraint firstItem="Wem-bm-Ltl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="rnP-id-OvV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s4x-y2-pHn"/>

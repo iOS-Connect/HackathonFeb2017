@@ -30,6 +30,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func logoutClicked(_ sender: Any) {
+        try! FIRAuth.auth()!.signOut()
+    }
 
 }
 
