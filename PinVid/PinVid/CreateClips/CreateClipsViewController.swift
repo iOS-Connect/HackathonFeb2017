@@ -19,7 +19,15 @@ class CreateClipsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupView()
+        setupNav()
+    }
+    
+    func setupNav() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addTapped))
+    }
+    
+    func setupView() {
         videoView.translatesAutoresizingMaskIntoConstraints = false
         videoView.backgroundColor = UIColor.orange
         self.view.addSubview(videoView)
@@ -51,4 +59,7 @@ class CreateClipsViewController: UIViewController {
         
     }
 
+    func addTapped(sender: UIButton) {
+        print("done")
+    }
 }

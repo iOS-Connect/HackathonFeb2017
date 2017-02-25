@@ -28,6 +28,7 @@
 		F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B21E62178000D1F4AA /* VideoView.swift */; };
 		F68D49B51E6218B000D1F4AA /* ClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B41E6218B000D1F4AA /* ClipsView.swift */; };
 		F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B61E6218C100D1F4AA /* ScrubberView.swift */; };
+		F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B81E621C5400D1F4AA /* RangeSlider.swift */; };
 		F86B560F3A53C5190F59A803 /* Pods_PinVidTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 		F68D49B21E62178000D1F4AA /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = CreateClips/VideoView.swift; sourceTree = "<group>"; };
 		F68D49B41E6218B000D1F4AA /* ClipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipsView.swift; sourceTree = "<group>"; };
 		F68D49B61E6218C100D1F4AA /* ScrubberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubberView.swift; sourceTree = "<group>"; };
+		F68D49B81E621C5400D1F4AA /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSlider.swift; path = CreateClips/RangeSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				0D388AE61E620C7700502510 /* CreateClipsViewController.swift */,
 				F68D49B61E6218C100D1F4AA /* ScrubberView.swift */,
+				F68D49B81E621C5400D1F4AA /* RangeSlider.swift */,
 				0D388AE81E620C8300502510 /* CreateClips.storyboard */,
 				F68D49B41E6218B000D1F4AA /* ClipsView.swift */,
 				F68D49B21E62178000D1F4AA /* VideoView.swift */,
@@ -525,6 +528,7 @@
 				D139D6FF1E6151C00061F6E8 /* PinVid.xcdatamodeld in Sources */,
 				D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */,
 				D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */,
+				F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */,
 				F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */,
 				0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */,
 				0D388AE71E620C7700502510 /* CreateClipsViewController.swift in Sources */,
