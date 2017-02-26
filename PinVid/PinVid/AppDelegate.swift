@@ -59,6 +59,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension UIApplication {
+    var networkService: NetworkService {
+        return (UIApplication.shared.delegate as! AppDelegate).networkService
+    }
+}
+
 extension AppDelegate {
     
     func updateWindow(forUser user: FIRUser?) {
@@ -84,6 +90,8 @@ extension AppDelegate {
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }
 }
+
+
 
 @objc protocol AuthDelegate {
     func didLogin(_ user: FIRUser)
