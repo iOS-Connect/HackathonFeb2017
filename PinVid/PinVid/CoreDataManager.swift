@@ -22,7 +22,6 @@ class CoreDataManager {
 
     
     func saveContext() {
-//        appDelegate.saveContext()
         let context = persistentContainer.viewContext
         if context.hasChanges {
             do {
@@ -34,31 +33,27 @@ class CoreDataManager {
         }
     }
     
-    func addVideo() {
+    func addClip(startTime: Double, endTime: Double) {
 
-        
-//        let managedContext = appDelegate.persistentContainer.viewContext
         let managedContext = persistentContainer.viewContext
         
-        let entity = NSEntityDescription.entity(forEntityName: "Video", in: managedContext)
+        let entity = NSEntityDescription.entity(forEntityName: "ClipData", in: managedContext)
         
-        let video = NSManagedObject(entity: entity!, insertInto: managedContext)
+        let clip = NSManagedObject(entity: entity!, insertInto: managedContext)
         
-        video.setValue("Jay's ID", forKey: "montage_id")
-        video.setValue("Jay's URL", forKey: "yt_url")
-        video.setValue("Jay's Title", forKey: "title")
-        video.setValue("Jay's Desc", forKey: "desc")
-        video.setValue("Jay's Author", forKey: "author")
+        clip.setValue(startTime, forKey: "start_time")
+        clip.setValue(endTime, forKey: "end_time")
+        clip.setValue("TgqiSBxvdws", forKey: "thumbnail_url")
+        
         
     }
     
     ///Featch all video when app opens
-    func fetchVideo() -> [NSManagedObject] {
+    func fetchClip() -> [NSManagedObject] {
         
-//        let managedContext = appDelegate.persistentContainer.viewContext
         let managedContext = persistentContainer.viewContext
 
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Video")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "ClipData")
         do {
             return try managedContext.fetch(fetchRequest)
         } catch let error as NSError {
@@ -68,5 +63,4 @@ class CoreDataManager {
         return [NSManagedObject]()
     }
     
-
 }

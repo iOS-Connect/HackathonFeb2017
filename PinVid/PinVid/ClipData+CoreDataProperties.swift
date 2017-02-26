@@ -16,8 +16,8 @@ extension ClipData {
         return NSFetchRequest<ClipData>(entityName: "ClipData");
     }
 
-    @NSManaged public var end_time: Int16
-    @NSManaged public var start_time: Int16
+    @NSManaged public var end_time: Double
+    @NSManaged public var start_time: Double
     @NSManaged public var thumbnail_url: String?
 
 }

@@ -122,6 +122,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func addClipPressed(sender:UIButton){
         if let startTime = scrubberView.prevStartTime, let endTime = scrubberView.prevEndTime {
             print("clipped: start \(startTime) | end \(endTime)")
+            CoreDataManager.sharedInstance.addClip(startTime: startTime, endTime: endTime)
         } else {
             print("need to customized both start and end time")
         }
