@@ -146,11 +146,30 @@ extension AppDelegate: AuthDelegate {
         montage2.desc = "This is another test."
         montage2.title = "MAX!"
         montage2.montage_id = "1111AAAA"
-        let clip3 = Clip(startTime: 10, endTime: 20, thumbNailUrl: "https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png")
-        let clip4 = Clip(startTime: 20, endTime: 30, thumbNailUrl: "https://storage.googleapis.com/gweb-uniblog-publish-prod/static/blog/images/google-200x200.7714256da16f.png")
+        let clip3 = Clip(startTime: 10, endTime: 20, thumbNailUrl: nil)
+        let clip4 = Clip(startTime: 20, endTime: 30, thumbNailUrl: nil)
         
         montage2.clips = [clip3, clip4]
 
+        
+        //test save image
+        clip3.thumbnailNameId = UUID().uuidString
+        let placeholderImage = UIImage(named: "placeholder")
+        guard let data = UIImagePNGRepresentation(placeholderImage!) else {
+            fatalError("convert to png data err")
+        }
+        
+        FirebaseService.shared.saveImage(data, withName: "\(clip3.thumbnailNameId).png", completionHandler: { (downloadUrlStr ,err) in
+            print(downloadUrlStr!)
+            if let durl = downloadUrlStr {
+                clip3.thumbnail_url = durl
+                FirebaseService.shared.addMontage(montage: montage2, user_id: user.uid, completionHandler: { (err) in
+                    if err != nil {
+                        print(err!)
+                    }
+                })
+            }
+        })
         //test saving
         FirebaseService.shared.addMontage(montage: montage1, user_id: user.uid) { (error) in
             if error != nil {
@@ -158,24 +177,13 @@ extension AppDelegate: AuthDelegate {
                 return
             }
             print("yay, it worked")
-            
-            
-            FirebaseService.shared.addMontage(montage: montage2, user_id: user.uid) { (error) in
-                if error != nil {
-                    print("fail")
-                    return
-                }
-                print("yay, it worked")
-                
-                
-                FirebaseService.shared.fetchMontages(user_id: user.uid) { (montages, err) in
-                    montages.forEach({
-                        print($0)
-                    })
-                }
+            FirebaseService.shared.fetchMontages(user_id: user.uid) { (montages, err) in
+                montages.forEach({
+                    print($0)
+                })
             }
-        }
 
+        }
     }
 }
 

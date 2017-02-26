@@ -30,7 +30,7 @@ class FirebaseService: NSObject {
         storageRef = FIRStorage.storage().reference()
 
     }
-    
+    //MARK: database services
     func addMontage(montage: Montage, user_id: String, completionHandler: @escaping (Error?) -> Void) {
         let montage_id = UUID().uuidString
         montage.montage_id = montage_id
@@ -57,13 +57,22 @@ class FirebaseService: NSObject {
     }
  
 }
-
+//MARK: storage service //save images
 extension FirebaseService {
-    func saveImage(_ imageData: Data, withName name: String) {
+    func saveImage(_ imageData: Data, withName name: String, completionHandler: @escaping (String?, NSError?) -> Void) {
         //name format <userid>_<montageid>_<clipsIndex>.png
         let imageName = name
-        
-        
+        let childRef = storageRef.child("images/\(imageName)")
+        let _ = childRef.put(imageData, metadata: nil) { (metadata, error) in
+            guard let metadata = metadata else {
+                print(error!)
+                completionHandler(nil, error as! NSError)
+                return
+            }
+            // Metadata contains file metadata such as size, content-type, and download URL.
+            let downloadURL = metadata.downloadURL()
+            completionHandler(downloadURL!.absoluteString, nil)
+        }
     }
 }
 
