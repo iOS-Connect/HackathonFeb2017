@@ -102,8 +102,8 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func ready(playerView: YTPlayerView) {
         scrubberView.rangeSlider.maximumValue = playerView.duration()
         
-        scrubberView.rangeSlider.upperValue = playerView.duration() * 2.0 / 3.0
-        scrubberView.rangeSlider.lowerValue = playerView.duration() / 3.0
+        scrubberView.rangeSlider.upperValue = playerView.duration()
+        scrubberView.rangeSlider.lowerValue = 0
         
         scrubberView.prevStartTime = scrubberView.rangeSlider.lowerValue
         scrubberView.prevEndTime = scrubberView.rangeSlider.upperValue
@@ -130,7 +130,17 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     }
     
     func tappedTimer(sender: UIButton) {
-        print("tapped on timer")
+        print("tapped on timer \(videoView.player.currentTime())")
+        switch scrubberView.rangeSlider.activeThumb {
+        case 1:
+            scrubberView.rangeSlider.lowerValue = Double(videoView.player.currentTime())
+            break
+        case 2:
+            scrubberView.rangeSlider.upperValue = Double(videoView.player.currentTime())
+            break
+        default:
+            break
+        }
     }
         
     func bigRewind(sender:UIButton) {
@@ -157,7 +167,6 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
             }
         }
     }
-    
     
     func smallFastForward(sender:UIButton) {
         print("smallFastForward")
