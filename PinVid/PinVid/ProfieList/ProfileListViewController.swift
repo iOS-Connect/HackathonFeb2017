@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UINavigationControllerDelegate{
+class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, CreateClipDelegate{
     let btn = UIButton(type: .system)
     @IBOutlet weak var collectionView: UICollectionView!
     var montages: [Montage] = [Montage]()
@@ -20,9 +20,10 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
         collectionView.delegate = self
         collectionView.dataSource = self
         flowLayout.estimatedItemSize = CGSize(width: 100, height: 100)
-        self.navigationController?.delegate = self
         let btn = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(createClip(_:)))
         navigationItem.rightBarButtonItem = btn
+        
+        loadMontages()
     }
 
     
@@ -46,14 +47,9 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
         }
     }
     
-    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+    func newclipReady() {
         loadMontages()
     }
-
-    
-//    override func viewWillAppear(_ animated: Bool) {
-//        loadMontages()
-//    }
     
     func setupBackgroundView() {
         btn.addTarget(self, action: #selector(createClip(_:)), for: .touchUpInside)
@@ -69,10 +65,16 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
     }
     
     func createClip(_ sender: UIButton?) {
-        let vc = UIViewController.instantiate(controllerType: CreateClipsViewController.self)
-        self.navigationController?.pushViewController(vc, animated: true)
+        //ypYXHoqck_w
+        self.showTextInputPrompt(withMessage: "Your youtube Id") { (res, id) in
+            if res == true {
+                let vc = UIViewController.instantiate(controllerType: CreateClipsViewController.self) as! CreateClipsViewController
+                vc.videoId = id!
+                vc.delegate = self
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileClipCell.identifier, for: indexPath) as! ProfileClipCell

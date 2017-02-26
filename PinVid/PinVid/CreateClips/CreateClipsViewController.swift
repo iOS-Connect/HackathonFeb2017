@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol CreateClipDelegate {
+    func newclipReady()
+}
 
 class CreateClipsViewController: UIViewController, VideoViewDelegate {
 
@@ -17,6 +20,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     var videoUrl: String = ""
     var montage = Montage()
     let networkService = UIApplication.shared.networkService
+    var delegate: CreateClipDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         videoUrl = "https://www.youtube.com/watch?v=" + videoId
@@ -143,6 +147,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
                         if err != nil {
                             print(err!)
                         }
+                        self.delegate.newclipReady()
                         self.navigationController?.popViewController(animated: true)
                     })
                 }
