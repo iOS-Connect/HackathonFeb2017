@@ -10,25 +10,24 @@ import UIKit
 
 class CreateClipsViewController: UIViewController, VideoViewDelegate {
 
-    var url:NSURL!
-    var startTime:Int!
-    
+    var videoId:String = "TgqiSBxvdws"
     var videoView: VideoView!
     var scrubberView = ScrubberView()
     var clipsView = ClipsView()
-    
+    var videoUrl: String = ""
+    var montage = Montage()
+    let networkService = UIApplication.shared.networkService
     override func viewDidLoad() {
         super.viewDidLoad()
+        videoUrl = "https://www.youtube.com/watch?v=" + videoId
         setupView()
-        setupNav()
+        //setupNav()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         scrubberView.rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(sender:)), for: .valueChanged)
         scrubberView.addClip.addTarget(self, action: #selector(addClipPressed(sender:)), for: .touchUpInside)
-        scrubberView.startTimeButton.addTarget(self, action: #selector(setCurrentTimeToStartTime(sender:)), for: .touchUpInside)
-        scrubberView.endTimeButton.addTarget(self, action: #selector(setCurrentTimeToEndTime(sender:)), for: .touchUpInside)
-        
+        scrubberView.timerButton.addTarget(self, action: #selector(tappedTimer(sender:)), for: .touchUpInside)
         scrubberView.tenSecBack.addTarget(self, action: #selector(bigRewind(sender:)), for: .touchUpInside)
         scrubberView.oneSecBack.addTarget(self, action: #selector(smallRewind(sender:)), for: .touchUpInside)
         scrubberView.oneSecForward.addTarget(self, action: #selector(smallFastForward(sender:)), for: .touchUpInside)
@@ -41,6 +40,8 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     
     func setupView() {
         videoView = VideoView(frame: .zero)
+        videoView.videoId = videoId
+        videoView.player.load(withVideoId: videoView.videoId, playerVars:videoView.playerVars)
         videoView.translatesAutoresizingMaskIntoConstraints = false
         videoView.backgroundColor = UIColor.orange
         videoView.delegate = self
@@ -104,8 +105,9 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     
     func ready(playerView: YTPlayerView) {
         scrubberView.rangeSlider.maximumValue = playerView.duration()
-        scrubberView.rangeSlider.upperValue = playerView.duration() * 2.0 / 3.0
-        scrubberView.rangeSlider.lowerValue = playerView.duration() / 3.0
+
+        scrubberView.rangeSlider.upperValue = playerView.duration()
+        scrubberView.rangeSlider.lowerValue = 0
         
         scrubberView.prevStartTime = scrubberView.rangeSlider.lowerValue
         scrubberView.prevEndTime = scrubberView.rangeSlider.upperValue
@@ -119,24 +121,52 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         return scrubberView.prevEndTime.map({return Float($0)})
     }
     
+    func updateTimer(time: Double) {
+        scrubberView.timerButton.setTitle(time.secondsToString(), for: .normal)
+    }
+    
     func addClipPressed(sender:UIButton){
         if let startTime = scrubberView.prevStartTime, let endTime = scrubberView.prevEndTime {
             print("clipped: start \(startTime) | end \(endTime)")
+            guard let videoImageData = UIImagePNGRepresentation(videoView.snapshotImage) else {
+                print("error: no snapshot img")
+                return
+            }
+            
+            let clip = Clip(startTime: Int(startTime), endTime: Int(endTime), thumbNailUrl: nil)
+            montage.clips.append(clip)
+            networkService.saveImage(videoImageData, withName: "\(clip.thumbnailNameId).png", completionHandler: { (downloadUrlStr ,err) in
+                print(downloadUrlStr!)
+                if let durl = downloadUrlStr {
+                    clip.thumbnail_url = durl
+                    self.networkService.addMontage(montage: self.montage, user_id: self.networkService.userId, completionHandler: { (err) in
+                        if err != nil {
+                            print(err!)
+                        }
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            })
+            
         } else {
             print("need to customized both start and end time")
         }
     }
     
-    func setCurrentTimeToStartTime(sender: UIButton) {
-        scrubberView.rangeSlider.lowerValue = videoView.mainPlayTime
-        updateStartTime(to: scrubberView.rangeSlider.lowerValue)
+    func tappedTimer(sender: UIButton) {
+        print("tapped on timer \(videoView.player.currentTime())")
+        switch scrubberView.rangeSlider.activeThumb {
+        case 1:
+            scrubberView.rangeSlider.lowerValue = Double(videoView.player.currentTime())
+            break
+        case 2:
+            scrubberView.rangeSlider.upperValue = Double(videoView.player.currentTime())
+            break
+        default:
+            break
+        }
     }
-    
-    func setCurrentTimeToEndTime(sender: UIButton) {
-        scrubberView.rangeSlider.upperValue = videoView.mainPlayTime
-        updateEndTime(to: scrubberView.rangeSlider.upperValue)
-    }
-    
+        
     func bigRewind(sender:UIButton) {
         print("bigRewind")
         baseUpdate(seconds: -10)
@@ -162,7 +192,6 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         }
     }
     
-    
     func smallFastForward(sender:UIButton) {
         print("smallFastForward")
         baseUpdate(seconds: 1)
@@ -171,5 +200,17 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func bigFastForward(sender:UIButton){
         print("bigFastForward")
         baseUpdate(seconds: 10)
+    }
+}
+
+extension Double {
+    func secondsToString() -> String {
+        let minutes:Int = Int(self / 60.0)
+        let minString:String = String(format: "%02d", minutes)
+        
+        let secondsLeft:Int = Int(self - Double(60 * minutes))
+        let secondsString:String = String(format: "%02d", secondsLeft)
+        
+        return "\(minString):\(secondsString)"
     }
 }

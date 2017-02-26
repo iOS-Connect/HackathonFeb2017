@@ -17,10 +17,9 @@ class ScrubberView: UIView {
     var tenSecForward: UIButton!
     var addClip:UIButton!
     
-    var stackView: UIStackView!
+    var skipperStackView: UIStackView!
     
-    var startTimeButton:UIButton!
-    var endTimeButton:UIButton!
+    var timerButton:UIButton!
     var clipRecord:UIButton!
     
     var prevStartTime:Double?
@@ -32,6 +31,12 @@ class ScrubberView: UIView {
         rangeSlider = RangeSlider(frame: frame)
         rangeSlider.translatesAutoresizingMaskIntoConstraints = false
         addSubview(rangeSlider)
+        
+        timerButton = UIButton()
+        timerButton.backgroundColor = UIColor.blue
+        timerButton.translatesAutoresizingMaskIntoConstraints = false
+        timerButton.setTitle("0:00", for: .normal)
+        addSubview(timerButton)
         
         addClip = UIButton()
         addClip.translatesAutoresizingMaskIntoConstraints = false
@@ -58,24 +63,12 @@ class ScrubberView: UIView {
         tenSecForward.backgroundColor = UIColor.orange
         tenSecForward.setTitle(">>", for: .normal)
         
-        startTimeButton = UIButton()
-        startTimeButton.backgroundColor = UIColor.blue
-        startTimeButton.translatesAutoresizingMaskIntoConstraints = false
-        startTimeButton.setTitle("Start: 0:00", for: .normal)
-        addSubview(startTimeButton)
-        
-        endTimeButton = UIButton()
-        endTimeButton.backgroundColor = UIColor.red
-        endTimeButton.translatesAutoresizingMaskIntoConstraints = false
-        endTimeButton.setTitle("End: 0:00", for: .normal)
-        addSubview(endTimeButton)
-        
         let buttons:[UIView] = [tenSecBack, oneSecBack, addClip, oneSecForward, tenSecForward]
-        stackView = UIStackView(arrangedSubviews: buttons)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fillEqually
-        addSubview(stackView)
+        skipperStackView = UIStackView(arrangedSubviews: buttons)
+        skipperStackView.translatesAutoresizingMaskIntoConstraints = false
+        skipperStackView.axis = .horizontal
+        skipperStackView.distribution = .fillEqually
+        addSubview(skipperStackView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,30 +77,22 @@ class ScrubberView: UIView {
 
     override func layoutSubviews() {
         
-        rangeSlider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        timerButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        timerButton.trailingAnchor.constraint(equalTo: rangeSlider.leadingAnchor).isActive = true
+        timerButton.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        timerButton.bottomAnchor.constraint(equalTo: skipperStackView.topAnchor).isActive = true
+        timerButton.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
+        timerButton.widthAnchor.constraint(equalToConstant: self.frame.height * 2 / 5).isActive = true
+        
+        rangeSlider.leadingAnchor.constraint(equalTo: timerButton.trailingAnchor).isActive = true
         rangeSlider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         rangeSlider.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        rangeSlider.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
+        rangeSlider.bottomAnchor.constraint(equalTo: skipperStackView.topAnchor).isActive = true
         
-        startTimeButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        startTimeButton.trailingAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        startTimeButton.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
-        startTimeButton.bottomAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        startTimeButton.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
-        startTimeButton.setContentHuggingPriority(10, for: UILayoutConstraintAxis.vertical)
-        
-        endTimeButton.leadingAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        endTimeButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        endTimeButton.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
-        endTimeButton.bottomAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        endTimeButton.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
-        endTimeButton.setContentHuggingPriority(10, for: UILayoutConstraintAxis.vertical)
-        
-        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        stackView.topAnchor.constraint(equalTo: startTimeButton.bottomAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        skipperStackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        skipperStackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        skipperStackView.topAnchor.constraint(equalTo: timerButton.bottomAnchor).isActive = true
+        skipperStackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
     }
-    
 }

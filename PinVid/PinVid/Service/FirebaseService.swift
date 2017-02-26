@@ -13,6 +13,7 @@ protocol NetworkService {
     func addMontage(montage: Montage, user_id: String, completionHandler: @escaping (Error?) -> Void)
     func fetchMontages(user_id: String, completionHandler: @escaping ([Montage], NSError?) -> Void)
     func saveImage(_ imageData: Data, withName name: String, completionHandler: @escaping (String?, NSError?) -> Void)
+    var userId: String { get }
 }
 
 class FirebaseService: NSObject, NetworkService {

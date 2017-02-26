@@ -22,8 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
         networkService = FirebaseService.shared
-//        route()
-
         updateWindow(forUser: FIRAuth.auth()?.currentUser)
         return true
     }
@@ -33,7 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "PinVid")
@@ -60,6 +57,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+extension UIApplication {
+    var networkService: NetworkService {
+        return (UIApplication.shared.delegate as! AppDelegate).networkService
+    }
+}
+
 extension AppDelegate {
     
     func updateWindow(forUser user: FIRUser?) {
@@ -78,13 +81,15 @@ extension AppDelegate {
     func presentCorrectViewController(user: FIRUser?) {
         let vc: UIViewController
         if let _ = user {
-            vc = ProfileListViewController.instantiate()
+            vc = UIViewController.instantiate(controllerType: ProfileListViewController.self)
         } else {
-            vc = EmailViewController.instantiate()
+            vc = UIViewController.instantiate(controllerType: ProfileListViewController.self)
         }
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }
 }
+
+
 
 @objc protocol AuthDelegate {
     func didLogin(_ user: FIRUser)
@@ -92,6 +97,8 @@ extension AppDelegate {
 
 extension AppDelegate: AuthDelegate {
     func didLogin(_ user: FIRUser) {
+        
+        //TODO: remove this once able to create on live
         testSaveAndFetch(user)
         updateWindow(forUser: FIRAuth.auth()?.currentUser)
     }
