@@ -77,7 +77,7 @@ class RangeSliderThumbLayer: CALayer {
         ctx.strokePath()
         
         if highlighted {
-            ctx.setFillColor(UIColor(white: 0.0, alpha: 0.1).cgColor)
+            ctx.setFillColor(UIColor.blue.cgColor)
             ctx.addPath(thumbPath.cgPath)
             ctx.fillPath()
         }
@@ -86,6 +86,9 @@ class RangeSliderThumbLayer: CALayer {
 
 @IBDesignable
 class RangeSlider: UIControl {
+    
+    var activeThumb:Int = 0
+    
     @IBInspectable var minimumValue: Double = 0.0 {
         willSet(newValue) {
             assert(newValue < maximumValue, "RangeSlider: minimumValue should be lower than maximumValue")
@@ -258,8 +261,25 @@ class RangeSlider: UIControl {
         // Hit test the thumb layers
         if lowerThumbLayer.frame.contains(previouslocation) {
             lowerThumbLayer.highlighted = true
+            activeThumb = 1
         } else if upperThumbLayer.frame.contains(previouslocation) {
             upperThumbLayer.highlighted = true
+            activeThumb = 2
+        } else {
+            activeThumb = 0
+        }
+        
+        print("active thumb \(activeThumb)")
+        
+        if activeThumb == 1 {
+            lowerThumbLayer.strokeColor = UIColor.blue
+            upperThumbLayer.strokeColor = UIColor.white
+        } else if activeThumb == 2 {
+            upperThumbLayer.strokeColor = UIColor.blue
+            lowerThumbLayer.strokeColor = UIColor.white
+        } else {
+            lowerThumbLayer.strokeColor = UIColor.white
+            upperThumbLayer.strokeColor = UIColor.white
         }
         
         return lowerThumbLayer.highlighted || upperThumbLayer.highlighted
@@ -274,6 +294,12 @@ class RangeSlider: UIControl {
         
         previouslocation = location
         
+        if activeThumb == 1 {
+            upperThumbLayer.highlighted = false
+        } else if activeThumb == 2 {
+            lowerThumbLayer.highlighted = false
+        }
+        
         // Update the values
         if lowerThumbLayer.highlighted {
             lowerValue = boundValue(lowerValue + deltaValue, toLowerValue: minimumValue, upperValue: upperValue - gapBetweenThumbs)
@@ -287,7 +313,15 @@ class RangeSlider: UIControl {
     }
     
     override func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        lowerThumbLayer.highlighted = false
-        upperThumbLayer.highlighted = false
+        if activeThumb == 1 {
+            upperThumbLayer.highlighted = false
+            lowerThumbLayer.highlighted = true
+        } else if activeThumb == 2 {
+            upperThumbLayer.highlighted = true
+            lowerThumbLayer.highlighted = false
+        } else {
+            upperThumbLayer.highlighted = false
+            lowerThumbLayer.highlighted = false
+        }
     }
 }

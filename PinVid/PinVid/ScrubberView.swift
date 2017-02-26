@@ -8,17 +8,20 @@
 
 import UIKit
 
-protocol scrubberDelegate:class {
-    func maximumValue() -> Double
-}
-
 class ScrubberView: UIView {
 
-    weak var delegate:scrubberDelegate?
     var rangeSlider: RangeSlider!
+    var tenSecBack: UIButton!
+    var oneSecBack: UIButton!
+    var oneSecForward: UIButton!
+    var tenSecForward: UIButton!
     var addClip:UIButton!
-    var startTimeLabel:UILabel!
-    var endTimeLabel:UILabel!
+    
+    var stackView: UIStackView!
+    
+    var startTimeButton:UIButton!
+    var endTimeButton:UIButton!
+    var clipRecord:UIButton!
     
     var prevStartTime:Double?
     var prevEndTime:Double?
@@ -32,24 +35,47 @@ class ScrubberView: UIView {
         
         addClip = UIButton()
         addClip.translatesAutoresizingMaskIntoConstraints = false
-        addClip.addTarget(self, action: #selector(addClipPressed), for: .touchUpInside)
         addClip.backgroundColor = UIColor.green
-        addClip.setTitle("Add Clip", for: .normal)
-        addSubview(addClip)
+        addClip.setTitle("Save Clip", for: .normal)
         
-        startTimeLabel = UILabel()
-        startTimeLabel.backgroundColor = UIColor.blue
-        startTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        startTimeLabel.text = "Start: 0:00"
-        startTimeLabel.textAlignment = .center
-        addSubview(startTimeLabel)
+        tenSecBack = UIButton()
+        tenSecBack.translatesAutoresizingMaskIntoConstraints = false
+        tenSecBack.backgroundColor = UIColor.brown
+        tenSecBack.setTitle("<<", for: .normal)
         
-        endTimeLabel = UILabel()
-        endTimeLabel.backgroundColor = UIColor.red
-        endTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        endTimeLabel.text = "End: 0:00"
-        endTimeLabel.textAlignment = .center
-        addSubview(endTimeLabel)
+        oneSecBack = UIButton()
+        oneSecBack.translatesAutoresizingMaskIntoConstraints = false
+        oneSecBack.backgroundColor = UIColor.purple
+        oneSecBack.setTitle("<", for: .normal)
+        
+        oneSecForward = UIButton()
+        oneSecForward.translatesAutoresizingMaskIntoConstraints = false
+        oneSecForward.backgroundColor = UIColor.magenta
+        oneSecForward.setTitle(">", for: .normal)
+        
+        tenSecForward = UIButton()
+        tenSecForward.translatesAutoresizingMaskIntoConstraints = false
+        tenSecForward.backgroundColor = UIColor.orange
+        tenSecForward.setTitle(">>", for: .normal)
+        
+        startTimeButton = UIButton()
+        startTimeButton.backgroundColor = UIColor.blue
+        startTimeButton.translatesAutoresizingMaskIntoConstraints = false
+        startTimeButton.setTitle("Start: 0:00", for: .normal)
+        addSubview(startTimeButton)
+        
+        endTimeButton = UIButton()
+        endTimeButton.backgroundColor = UIColor.red
+        endTimeButton.translatesAutoresizingMaskIntoConstraints = false
+        endTimeButton.setTitle("End: 0:00", for: .normal)
+        addSubview(endTimeButton)
+        
+        let buttons:[UIView] = [tenSecBack, oneSecBack, addClip, oneSecForward, tenSecForward]
+        stackView = UIStackView(arrangedSubviews: buttons)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        addSubview(stackView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,31 +87,27 @@ class ScrubberView: UIView {
         rangeSlider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         rangeSlider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         rangeSlider.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        rangeSlider.heightAnchor.constraint(equalToConstant: self.frame.height / 3).isActive = true
+        rangeSlider.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
         
-        startTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        startTimeLabel.trailingAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        startTimeLabel.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
-        startTimeLabel.bottomAnchor.constraint(equalTo: addClip.topAnchor).isActive = true
-
-        endTimeLabel.leadingAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        endTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        endTimeLabel.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
-        endTimeLabel.bottomAnchor.constraint(equalTo: addClip.topAnchor).isActive = true
-
-        addClip.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        addClip.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        addClip.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor, constant: self.frame.height / 3).isActive = true
-        addClip.heightAnchor.constraint(equalToConstant: self.frame.height / 3).isActive = true
+        startTimeButton.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        startTimeButton.trailingAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        startTimeButton.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
+        startTimeButton.bottomAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        startTimeButton.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
+        startTimeButton.setContentHuggingPriority(10, for: UILayoutConstraintAxis.vertical)
+        
+        endTimeButton.leadingAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        endTimeButton.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        endTimeButton.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
+        endTimeButton.bottomAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        endTimeButton.heightAnchor.constraint(equalToConstant: self.frame.height / 4).isActive = true
+        endTimeButton.setContentHuggingPriority(10, for: UILayoutConstraintAxis.vertical)
+        
+        stackView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: startTimeButton.bottomAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
     }
     
-    func addClipPressed(sender:UIButton){
-        if let startTime = prevStartTime, let endTime = prevEndTime {
-            print("clipped: start \(startTime) | end \(endTime)")
-        } else {
-            print("need to customized both start and end time")
-        }
-
-    }
 }
