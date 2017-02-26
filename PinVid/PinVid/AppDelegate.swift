@@ -89,6 +89,8 @@ extension AppDelegate {
 
 extension AppDelegate: AuthDelegate {
     func didLogin(_ user: FIRUser) {
+        
+        //TODO: remove this once able to create on live
         testSaveAndFetch(user)
         updateWindow(forUser: FIRAuth.auth()?.currentUser)
     }

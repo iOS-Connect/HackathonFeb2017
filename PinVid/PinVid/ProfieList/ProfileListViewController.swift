@@ -9,11 +9,14 @@
 import UIKit
 
 class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
-    
+    let btn = UIButton(type: .system)
     @IBOutlet weak var collectionView: UICollectionView!
     var montages: [Montage] = [Montage]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupBackgroundView()
+        
         let flowLayout = UICollectionViewFlowLayout()
         collectionView.collectionViewLayout = flowLayout
         collectionView.delegate = self
@@ -34,6 +37,25 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
             }
         }
     }
+    
+    func setupBackgroundView() {
+        btn.addTarget(self, action: #selector(createClip(_:)), for: .touchUpInside)
+        btn.setTitle("Create Clips", for: .normal)
+        self.collectionView.backgroundView = btn
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.centerXAnchor.constraint(equalTo: self.collectionView.centerXAnchor).isActive = true
+        btn.centerYAnchor.constraint(equalTo: self.collectionView.centerYAnchor).isActive = true
+    }
+    
+    func createClip(_ sender: UIButton) {
+        let vc = UIViewController.instantiate(controllerType: CreateClipsViewController.self)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileClipCell.identifier, for: indexPath) as! ProfileClipCell
