@@ -56,6 +56,13 @@
                                     <action selector="logoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ih4-S2-Z3k"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fwm-Bj-qNz">
+                                <rect key="frame" x="67" y="419" width="240" height="205"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="t6b-BF-wlW"/>
+                                    <constraint firstAttribute="height" constant="205" id="wP4-CS-Tct"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -67,12 +74,17 @@
                             <constraint firstItem="dDD-4N-Zso" firstAttribute="top" secondItem="0Gb-QZ-eib" secondAttribute="bottom" constant="8" id="Fkw-F8-Lkn"/>
                             <constraint firstItem="s66-jq-ufu" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="100" id="MZl-h3-s6Z"/>
                             <constraint firstItem="E0T-EU-UK7" firstAttribute="top" secondItem="dDD-4N-Zso" secondAttribute="bottom" constant="8" id="T9U-sL-AYr"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Fwm-Bj-qNz" secondAttribute="bottom" constant="43" id="Tuo-ik-T0X"/>
+                            <constraint firstItem="Fwm-Bj-qNz" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="51" id="U8V-It-Gex"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s66-jq-ufu" secondAttribute="trailing" constant="33" id="WHO-LA-9aG"/>
                             <constraint firstAttribute="leadingMargin" secondItem="s66-jq-ufu" secondAttribute="leading" id="eML-QG-nwE"/>
                             <constraint firstItem="Wem-bm-Ltl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="rnP-id-OvV"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s4x-y2-pHn"/>
+                    <connections>
+                        <outlet property="imageView" destination="Fwm-Bj-qNz" id="kQF-ZM-Bmr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

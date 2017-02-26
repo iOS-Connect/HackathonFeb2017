@@ -16,7 +16,7 @@ class VideoView: UIView, YTPlayerViewDelegate {
 
     weak var delegate:VideoViewDelegate?
     var player:YTPlayerView!
-    var videoId:String = "TgqiSBxvdws"
+    var videoId: String = "TgqiSBxvdws"
     let playerVars = ["controls":0,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1, "autoplay":1]
     
     override init(frame: CGRect) {

@@ -65,11 +65,11 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     }
 
     func addTapped(sender: UIButton) {
+        
         print("done")
     }
     
     func rangeSliderValueChanged(sender:RangeSlider){
-        
         if scrubberView.prevEndTime != sender.upperValue {
             scrubberView.prevEndTime = sender.upperValue
             videoView.player.seek(toSeconds: Float(sender.upperValue), allowSeekAhead: true)
@@ -85,7 +85,6 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     
     func ready(playerView: YTPlayerView) {
         scrubberView.rangeSlider.maximumValue = playerView.duration()
-        
         scrubberView.rangeSlider.upperValue = playerView.duration() * 2.0 / 3.0
         scrubberView.rangeSlider.lowerValue = playerView.duration() / 3.0
     }
