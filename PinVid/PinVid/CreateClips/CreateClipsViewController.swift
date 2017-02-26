@@ -8,17 +8,21 @@
 
 import UIKit
 
+// let vc = CreateClips()
+// vc.videoId = ""
+//
+
 class CreateClipsViewController: UIViewController, VideoViewDelegate {
 
     var videoId:String = "TgqiSBxvdws"
     var videoView: VideoView!
     var scrubberView = ScrubberView()
-    var clipsView = ClipsView()
+    var searchView = SearchView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        setupNav()
+//        setupNav()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,6 +33,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         scrubberView.oneSecBack.addTarget(self, action: #selector(smallRewind(sender:)), for: .touchUpInside)
         scrubberView.oneSecForward.addTarget(self, action: #selector(smallFastForward(sender:)), for: .touchUpInside)
         scrubberView.tenSecForward.addTarget(self, action: #selector(bigFastForward(sender:)), for: .touchUpInside)
+        searchView.loadURL.addTarget(self, action: #selector(loadURLTapped(sender:)), for: .touchUpInside)
     }
     
     func setupNav() {
@@ -36,6 +41,11 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     }
     
     func setupView() {
+        
+        searchView.translatesAutoresizingMaskIntoConstraints = false
+        searchView.backgroundColor = UIColor.lightGray
+        self.view.addSubview(searchView)
+        
         videoView = VideoView(frame: .zero)
         videoView.videoId = videoId
         videoView.player.load(withVideoId: videoView.videoId, playerVars:videoView.playerVars)
@@ -47,21 +57,17 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         scrubberView.translatesAutoresizingMaskIntoConstraints = false
         scrubberView.backgroundColor = UIColor.black
         self.view.addSubview(scrubberView)
-        
-        clipsView.translatesAutoresizingMaskIntoConstraints = false
-        clipsView.backgroundColor = UIColor.lightGray
-        self.view.addSubview(clipsView)
     }
     
     override func viewWillLayoutSubviews() {
-        clipsView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
-        clipsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        clipsView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 5).isActive = true
-        clipsView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
+        searchView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        searchView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        searchView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 5).isActive = true
+        searchView.topAnchor.constraint(equalTo: topLayoutGuide.bottomAnchor).isActive = true
         
         videoView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
         videoView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
-        videoView.topAnchor.constraint(equalTo: clipsView.bottomAnchor).isActive = true
+        videoView.topAnchor.constraint(equalTo: searchView.bottomAnchor).isActive = true
         videoView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 2).isActive = true
         
         scrubberView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
@@ -177,6 +183,25 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func bigFastForward(sender:UIButton){
         print("bigFastForward")
         baseUpdate(seconds: 10)
+    }
+    
+    func loadURLTapped(sender: UIButton){
+        let fullURL = searchView.urlTextField.text!
+        
+        let extractedID = fullURL.extractVideoId()
+        videoView.player.load(withVideoId: extractedID, playerVars: videoView.playerVars)
+        videoView.videoId = extractedID
+        videoId = extractedID
+        searchView.urlTextField.resignFirstResponder()
+    }
+}
+
+extension String {
+    func extractVideoId() -> String {
+        let url = self
+        let queryItems = URLComponents(string: url)?.queryItems
+        let videoId = queryItems?.filter({$0.name == "v"}).first
+        return (videoId?.value)!
     }
 }
 

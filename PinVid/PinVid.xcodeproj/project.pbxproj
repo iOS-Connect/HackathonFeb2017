@@ -34,11 +34,11 @@
 		D139D71A1E6151C10061F6E8 /* PinVidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139D7191E6151C10061F6E8 /* PinVidUITests.swift */; };
 		D139D7281E620B4C0061F6E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */; };
 		F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B21E62178000D1F4AA /* VideoView.swift */; };
-		F68D49B51E6218B000D1F4AA /* ClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B41E6218B000D1F4AA /* ClipsView.swift */; };
 		F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B61E6218C100D1F4AA /* ScrubberView.swift */; };
 		F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B81E621C5400D1F4AA /* RangeSlider.swift */; };
 		F68D49BE1E6230D600D1F4AA /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */; };
 		F68D49C01E6230F900D1F4AA /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68D49BF1E6230F900D1F4AA /* Assets.bundle */; };
+		F6DF99931E63779D0015B760 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6DF99921E63779D0015B760 /* SearchView.swift */; };
 		F86B560F3A53C5190F59A803 /* Pods_PinVidTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -104,13 +104,13 @@
 		D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F4220DAD87F0B89269C866BA /* Pods-PinVidUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidUITests/Pods-PinVidUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F68D49B21E62178000D1F4AA /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = CreateClips/VideoView.swift; sourceTree = "<group>"; };
-		F68D49B41E6218B000D1F4AA /* ClipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipsView.swift; sourceTree = "<group>"; };
 		F68D49B61E6218C100D1F4AA /* ScrubberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubberView.swift; sourceTree = "<group>"; };
 		F68D49B81E621C5400D1F4AA /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSlider.swift; path = CreateClips/RangeSlider.swift; sourceTree = "<group>"; };
 		F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinVid-Bridging-Header.h"; sourceTree = "<group>"; };
 		F68D49BC1E6230D600D1F4AA /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
 		F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
 		F68D49BF1E6230F900D1F4AA /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
+		F6DF99921E63779D0015B760 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchView.swift; path = CreateClips/SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,9 +179,9 @@
 				0D0633B41E62906E00D6A16A /* YouTubeViewController.swift */,
 				0D388AE61E620C7700502510 /* CreateClipsViewController.swift */,
 				F68D49B61E6218C100D1F4AA /* ScrubberView.swift */,
+				F6DF99921E63779D0015B760 /* SearchView.swift */,
 				F68D49B81E621C5400D1F4AA /* RangeSlider.swift */,
 				0D388AE81E620C8300502510 /* CreateClips.storyboard */,
-				F68D49B41E6218B000D1F4AA /* ClipsView.swift */,
 				F68D49B21E62178000D1F4AA /* VideoView.swift */,
 			);
 			name = CreatClips;
@@ -372,6 +372,7 @@
 				TargetAttributes = {
 					D139D6F21E6151C00061F6E8 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 4C8V97R8N3;
 						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
@@ -583,7 +584,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F68D49B51E6218B000D1F4AA /* ClipsView.swift in Sources */,
+				F6DF99931E63779D0015B760 /* SearchView.swift in Sources */,
 				F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */,
 				D139D6FF1E6151C00061F6E8 /* PinVid.xcdatamodeld in Sources */,
 				D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */,
@@ -754,6 +755,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4C8V97R8N3;
 				INFOPLIST_FILE = PinVid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PinVid.PinVid;
@@ -771,6 +773,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 4C8V97R8N3;
 				INFOPLIST_FILE = PinVid/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PinVid.PinVid;
