@@ -85,7 +85,7 @@ extension AppDelegate {
         if let _ = user {
             vc = UIViewController.instantiate(controllerType: ProfileListViewController.self)
         } else {
-            vc = UIViewController.instantiate(controllerType: ProfileListViewController.self)
+            vc = UIViewController.instantiate(controllerType: EmailViewController.self)
         }
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }
