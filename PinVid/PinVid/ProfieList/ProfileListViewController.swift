@@ -57,8 +57,8 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
 
 extension ProfileListViewController {
     static func instantiate() -> ProfileListViewController {
-        let storyboard = UIStoryboard(name: "ProfileList", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileListViewController") as! ProfileListViewController
+        let storyboard = UIStoryboard(name: Controllers.ProfileListViewController.storyboardName, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: Controllers.ProfileListViewController.identifier) as! ProfileListViewController
         return vc
     }
 
