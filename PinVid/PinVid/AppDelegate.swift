@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
-        route()
+        updateWindow(forUser: FIRAuth.auth()?.currentUser)
         return true
     }
     
@@ -57,8 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 extension AppDelegate {
     
-    func route() {
-        let user = FIRAuth.auth()?.currentUser
+    func updateWindow(forUser user: FIRUser?) {
         saveUserIDToDefault(user: user)
         presentCorrectViewController(user: user)
     }
@@ -89,7 +88,7 @@ extension AppDelegate {
 extension AppDelegate: AuthDelegate {
     func didLogin(_ user: FIRUser) {
         testSaveAndFetch(user)
-        route()
+        updateWindow(forUser: FIRAuth.auth()?.currentUser)
     }
 
     func testSaveAndFetch(_ user: FIRUser) {
