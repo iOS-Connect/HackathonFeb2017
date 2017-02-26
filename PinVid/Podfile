@@ -10,6 +10,7 @@ target 'PinVid' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Auth'
         pod 'SwiftyJSON'
+	pod 'SDWebImage', '~>3.8'
   target 'PinVidTests' do
     inherit! :search_paths
     # Pods for testing

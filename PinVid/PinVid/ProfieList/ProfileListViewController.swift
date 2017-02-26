@@ -8,28 +8,56 @@
 
 import UIKit
 
-class ProfileListViewController: UIViewController {
-
+class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    var montages: [Montage] = [Montage]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        let flowLayout = UICollectionViewFlowLayout()
+        collectionView.collectionViewLayout = flowLayout
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        guard let userId = UserDefaults.standard.value(forKey: AppDelegate.Constants.userId) as? String else {
+            fatalError("no userId found")
+        }
+        
+        FirebaseService.shared.fetchMontages(user_id: userId) { (montages, err) in
+            if err != nil {
+                //TODO handle
+                print(err!)
+            } else {
+                self.montages = montages
+                self.collectionView.reloadData()
+            }
+        }
+        
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return self.collectionView.bounds.size
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileClipCell.identifier, for: indexPath) as! ProfileClipCell
+        cell.montage = montages[indexPath.item]
+        cell.updateUI()
+        return cell
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return montages.count
+    }
+
+
+
+}
+
+extension ProfileListViewController {
+    static func instantiate() -> ProfileListViewController {
+        let storyboard = UIStoryboard(name: "ProfileList", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileListViewController") as! ProfileListViewController
+        return vc
+    }
 
 }
