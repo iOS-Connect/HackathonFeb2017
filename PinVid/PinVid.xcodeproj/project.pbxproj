@@ -17,6 +17,7 @@
 		0D388AF31E622FF300502510 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF11E622FF300502510 /* EmailViewController.m */; };
 		0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF51E6243F100502510 /* FirebaseService.swift */; };
 		0DE134EB1E625A47004575BB /* ProfileClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE134EA1E625A47004575BB /* ProfileClipCell.swift */; };
+		171E1E7B1E62768A00AA007D /* YouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171E1E7A1E62768A00AA007D /* YouTubeViewController.swift */; };
 		4D4CE77DEBE357C886DE0D06 /* Pods_PinVid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */; };
 		8E4C685D241BE0CD5FECE7ED /* Pods_PinVidUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */; };
 		AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58BAB51E621A8B0046EF0F /* Montage.swift */; };
@@ -70,6 +71,7 @@
 		0D388AF11E622FF300502510 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		0D388AF51E6243F100502510 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = Service/FirebaseService.swift; sourceTree = "<group>"; };
 		0DE134EA1E625A47004575BB /* ProfileClipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileClipCell.swift; path = ProfieList/ProfileClipCell.swift; sourceTree = "<group>"; };
+		171E1E7A1E62768A00AA007D /* YouTubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinVidTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A64BD5E90B6C942FFA604C5 /* Pods-PinVid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVid.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVid/Pods-PinVid.release.xcconfig"; sourceTree = "<group>"; };
 		378DA587B95CD522A552A9AA /* Pods-PinVidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidTests/Pods-PinVidTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				D139D6F61E6151C00061F6E8 /* AppDelegate.swift */,
 				D139D6F81E6151C00061F6E8 /* ViewController.swift */,
 				D139D6FA1E6151C00061F6E8 /* Main.storyboard */,
+				171E1E7A1E62768A00AA007D /* YouTubeViewController.swift */,
 				D139D7001E6151C00061F6E8 /* Assets.xcassets */,
 				D139D7021E6151C00061F6E8 /* LaunchScreen.storyboard */,
 				D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */,
@@ -574,6 +577,7 @@
 				0D388AF31E622FF300502510 /* EmailViewController.m in Sources */,
 				F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */,
 				F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */,
+				171E1E7B1E62768A00AA007D /* YouTubeViewController.swift in Sources */,
 				AA58BAB81E621A930046EF0F /* Clip.swift in Sources */,
 				0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */,
 				0DE134EB1E625A47004575BB /* ProfileClipCell.swift in Sources */,
