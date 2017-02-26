@@ -21,7 +21,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     var videoView: VideoView!
     var scrubberView = ScrubberView()
     var searchView = SearchView()
-    var clipsView = ClipsView()
+//    var clipsView = ClipsView()
     var videoUrl: String = ""
     var montage = Montage()
     let networkService = UIApplication.shared.networkService
