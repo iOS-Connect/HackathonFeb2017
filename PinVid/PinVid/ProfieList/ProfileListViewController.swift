@@ -10,6 +10,7 @@ import UIKit
 
 class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, UINavigationControllerDelegate{
     let btn = UIButton(type: .system)
+    @IBOutlet var userImageView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
     var montages: [Montage] = [Montage]()
     override func viewDidLoad() {
