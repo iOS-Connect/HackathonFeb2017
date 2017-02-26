@@ -60,16 +60,12 @@ extension AppDelegate {
         let vc: UIViewController!
         //show login if not registered.
         if let user = FIRAuth.auth()?.currentUser {
-            let storyboard = UIStoryboard(name: "ProfileList", bundle: nil)
-            vc = storyboard.instantiateViewController(withIdentifier: "ProfileListViewController")
-            
+            vc = ProfileListViewController.instantiate()
             let userid = user.uid
             UserDefaults.standard.set(userid, forKey: AppDelegate.Constants.userId)
             UserDefaults.standard.synchronize()
         } else {
-            let storyboard = UIStoryboard(name: "Auth", bundle: nil)
-            vc = storyboard.instantiateViewController(withIdentifier: "EmailViewController")
-
+            vc = EmailViewController.instantiate()
         }
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }

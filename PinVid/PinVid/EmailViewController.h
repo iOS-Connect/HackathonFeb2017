@@ -15,9 +15,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PinVid-Swift.h"
+
 
 
 @interface EmailViewController : UIViewController
-
++ (EmailViewController*) instantiate;
 @end
