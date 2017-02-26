@@ -14,6 +14,10 @@ import FirebaseAuth
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    struct Constants {
+        static let userId = "kUserId"
+    }
+    
     var window: UIWindow?
     
 
@@ -103,7 +107,7 @@ extension AppDelegate {
             vc = storyboard.instantiateViewController(withIdentifier: "ProfileListViewController")
             
             let userid = user.uid
-            UserDefaults.standard.set(userid, forKey: "kUserId")
+            UserDefaults.standard.set(userid, forKey: AppDelegate.Constants.userId)
             UserDefaults.standard.synchronize()
         } else {
             let storyboard = UIStoryboard(name: "Auth", bundle: nil)
