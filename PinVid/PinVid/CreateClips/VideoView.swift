@@ -12,15 +12,15 @@ protocol VideoViewDelegate:class {
     func ready(playerView:YTPlayerView)
     func getEndTime() -> Float?
     func getStartTime() -> Float?
+    func updateTimer(time:Double)
 }
 
 class VideoView: UIView, YTPlayerViewDelegate {
 
     weak var delegate:VideoViewDelegate?
     var player:YTPlayerView!
-    var videoId:String = "TgqiSBxvdws"
+    var videoId:String!
     let playerVars = ["controls":0,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1, "autoplay":1]
-    var mainPlayTime = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,8 +28,6 @@ class VideoView: UIView, YTPlayerViewDelegate {
         player.translatesAutoresizingMaskIntoConstraints = false
         self.player.delegate = self
         addSubview(player)
-    
-        player.load(withVideoId: videoId, playerVars:playerVars)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -50,7 +48,7 @@ class VideoView: UIView, YTPlayerViewDelegate {
     }
     
     func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
-        mainPlayTime = Double(playTime)
+        delegate?.updateTimer(time: Double(playTime))
         if delegate?.getEndTime() != nil && delegate?.getStartTime() != nil && playTime >= (delegate?.getEndTime())! {
             print("seek to beginning")
             player.seek(toSeconds: (delegate?.getStartTime())!, allowSeekAhead: true)

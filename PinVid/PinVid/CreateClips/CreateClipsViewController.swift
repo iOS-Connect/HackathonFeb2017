@@ -10,9 +10,7 @@ import UIKit
 
 class CreateClipsViewController: UIViewController, VideoViewDelegate {
 
-    var url:NSURL!
-    var startTime:Int!
-    
+    var videoId:String = "TgqiSBxvdws"
     var videoView: VideoView!
     var scrubberView = ScrubberView()
     var clipsView = ClipsView()
@@ -26,9 +24,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         scrubberView.rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(sender:)), for: .valueChanged)
         scrubberView.addClip.addTarget(self, action: #selector(addClipPressed(sender:)), for: .touchUpInside)
-        scrubberView.startTimeButton.addTarget(self, action: #selector(setCurrentTimeToStartTime(sender:)), for: .touchUpInside)
-        scrubberView.endTimeButton.addTarget(self, action: #selector(setCurrentTimeToEndTime(sender:)), for: .touchUpInside)
-        
+        scrubberView.timerButton.addTarget(self, action: #selector(tappedTimer(sender:)), for: .touchUpInside)
         scrubberView.tenSecBack.addTarget(self, action: #selector(bigRewind(sender:)), for: .touchUpInside)
         scrubberView.oneSecBack.addTarget(self, action: #selector(smallRewind(sender:)), for: .touchUpInside)
         scrubberView.oneSecForward.addTarget(self, action: #selector(smallFastForward(sender:)), for: .touchUpInside)
@@ -41,6 +37,8 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     
     func setupView() {
         videoView = VideoView(frame: .zero)
+        videoView.videoId = videoId
+        videoView.player.load(withVideoId: videoView.videoId, playerVars:videoView.playerVars)
         videoView.translatesAutoresizingMaskIntoConstraints = false
         videoView.backgroundColor = UIColor.orange
         videoView.delegate = self
@@ -119,6 +117,10 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         return scrubberView.prevEndTime.map({return Float($0)})
     }
     
+    func updateTimer(time: Double) {
+        scrubberView.timerButton.setTitle(time.secondsToString(), for: .normal)
+    }
+    
     func addClipPressed(sender:UIButton){
         if let startTime = scrubberView.prevStartTime, let endTime = scrubberView.prevEndTime {
             print("clipped: start \(startTime) | end \(endTime)")
@@ -127,16 +129,10 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         }
     }
     
-    func setCurrentTimeToStartTime(sender: UIButton) {
-        scrubberView.rangeSlider.lowerValue = videoView.mainPlayTime
-        updateStartTime(to: scrubberView.rangeSlider.lowerValue)
+    func tappedTimer(sender: UIButton) {
+        print("tapped on timer")
     }
-    
-    func setCurrentTimeToEndTime(sender: UIButton) {
-        scrubberView.rangeSlider.upperValue = videoView.mainPlayTime
-        updateEndTime(to: scrubberView.rangeSlider.upperValue)
-    }
-    
+        
     func bigRewind(sender:UIButton) {
         print("bigRewind")
         baseUpdate(seconds: -10)
@@ -171,5 +167,17 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func bigFastForward(sender:UIButton){
         print("bigFastForward")
         baseUpdate(seconds: 10)
+    }
+}
+
+extension Double {
+    func secondsToString() -> String {
+        let minutes:Int = Int(self / 60.0)
+        let minString:String = String(format: "%02d", minutes)
+        
+        let secondsLeft:Int = Int(self - Double(60 * minutes))
+        let secondsString:String = String(format: "%02d", secondsLeft)
+        
+        return "\(minString):\(secondsString)"
     }
 }
