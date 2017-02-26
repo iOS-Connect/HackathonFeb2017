@@ -66,10 +66,11 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
     
     func createClip(_ sender: UIButton?) {
         //ypYXHoqck_w
-        self.showTextInputPrompt(withMessage: "Your youtube Id") { (res, id) in
+        self.showTextInputPrompt(withMessage: "Your youtube url") { (res, id) in
             if res == true {
                 let vc = UIViewController.instantiate(controllerType: CreateClipsViewController.self) as! CreateClipsViewController
-                vc.videoId = id!
+                vc.videoId = (id?.extractYoutubeIdFromLink()!)!
+                
                 vc.delegate = self
                 self.navigationController?.pushViewController(vc, animated: true)
             }

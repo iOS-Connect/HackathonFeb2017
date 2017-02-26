@@ -85,7 +85,7 @@ extension AppDelegate {
         if let _ = user {
             vc = UIViewController.instantiate(controllerType: ProfileListViewController.self)
         } else {
-            vc = UIViewController.instantiate(controllerType: ProfileListViewController.self)
+            vc = UIViewController.instantiate(controllerType: EmailViewController.self)
         }
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }
@@ -101,7 +101,7 @@ extension AppDelegate: AuthDelegate {
     func didLogin(_ user: FIRUser) {
         
         //TODO: remove this once able to create on live
-        testSaveAndFetch(user)
+//        testSaveAndFetch(user)
         updateWindow(forUser: FIRAuth.auth()?.currentUser)
     }
     func testSaveAndFetch(_ user: FIRUser) {

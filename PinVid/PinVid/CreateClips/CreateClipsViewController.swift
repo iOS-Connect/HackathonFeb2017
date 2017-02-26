@@ -21,7 +21,6 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     var videoView: VideoView!
     var scrubberView = ScrubberView()
     var searchView = SearchView()
-    var clipsView = ClipsView()
     var videoUrl: String = ""
     var montage = Montage()
     let networkService = UIApplication.shared.networkService
@@ -219,8 +218,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     
     func loadURLTapped(sender: UIButton){
         let fullURL = searchView.urlTextField.text!
-        
-        let extractedID = fullURL.extractVideoId()
+        let extractedID = fullURL.extractYoutubeIdFromLink()!
         videoView.player.load(withVideoId: extractedID, playerVars: videoView.playerVars)
         videoView.videoId = extractedID
         videoId = extractedID
@@ -234,6 +232,23 @@ extension String {
         let queryItems = URLComponents(string: url)?.queryItems
         let videoId = queryItems?.filter({$0.name == "v"}).first
         return (videoId?.value)!
+    }
+    
+    func extractYoutubeIdFromLink() -> String? {
+        let pattern = "((?<=(v|V)/)|(?<=be/)|(?<=(\\?|\\&)v=)|(?<=embed/))([\\w-]++)"
+        guard let regExp = try? NSRegularExpression(pattern: pattern, options: .caseInsensitive) else {
+            return nil
+        }
+        let nsLink = self as NSString
+        let options = NSRegularExpression.MatchingOptions(rawValue: 0)
+        let range = NSRange(location: 0,length: nsLink.length)
+        let matches = regExp.matches(in: self as String, options:options, range:range)
+        if let firstMatch = matches.first {
+            print(firstMatch)
+            
+            return nsLink.substring(with: firstMatch.range)
+        }
+        return nil
     }
 }
 
