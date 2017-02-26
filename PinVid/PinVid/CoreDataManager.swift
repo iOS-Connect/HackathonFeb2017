@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 import CoreData
-
+import Firebase
 class CoreDataManager {
     
     static let sharedInstance = CoreDataManager()
@@ -41,10 +41,19 @@ class CoreDataManager {
         
         let clip = NSManagedObject(entity: entity!, insertInto: managedContext)
         
+        let videoID = "TgqiSBxvdws"
+        
         clip.setValue(startTime, forKey: "start_time")
         clip.setValue(endTime, forKey: "end_time")
-        clip.setValue("TgqiSBxvdws", forKey: "thumbnail_url")
+        clip.setValue(videoID, forKey: "thumbnail_url")
         
+        let clipData = [
+            "startTime": startTime,
+            "endTime": endTime,
+            "videoID": videoID
+            ] as [String : Any]
+        
+        uploadToFirebase(clip: clipData)
         
     }
     
@@ -63,4 +72,10 @@ class CoreDataManager {
         return [NSManagedObject]()
     }
     
+    func uploadToFirebase(clip: [String: Any]) {
+        let firebaseref = FIRDatabase.database().reference().child("clips").childByAutoId()
+        firebaseref.setValue(clip)
+    }
 }
+
+
