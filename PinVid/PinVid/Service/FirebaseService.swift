@@ -9,7 +9,13 @@
 import UIKit
 import Firebase
 
-class FirebaseService: NSObject {
+protocol NetworkService {
+    func addMontage(montage: Montage, user_id: String, completionHandler: @escaping (Error?) -> Void)
+    func fetchMontages(user_id: String, completionHandler: @escaping ([Montage], NSError?) -> Void)
+    func saveImage(_ imageData: Data, withName name: String, completionHandler: @escaping (String?, NSError?) -> Void)
+}
+
+class FirebaseService: NSObject, NetworkService {
     let ref: FIRDatabaseReference!
     let storageRef: FIRStorageReference!
     var userId: String {

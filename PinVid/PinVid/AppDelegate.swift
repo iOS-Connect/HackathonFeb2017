@@ -14,6 +14,8 @@ import FirebaseAuth
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var networkService: NetworkService!
+    
     struct Constants {
         static let userId = "kUserId"
     }
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FIRApp.configure()
+        networkService = FirebaseService.shared
         route()
         return true
     }
@@ -159,11 +162,11 @@ extension AppDelegate: AuthDelegate {
             fatalError("convert to png data err")
         }
         
-        FirebaseService.shared.saveImage(data, withName: "\(clip3.thumbnailNameId).png", completionHandler: { (downloadUrlStr ,err) in
+        networkService.saveImage(data, withName: "\(clip3.thumbnailNameId).png", completionHandler: { (downloadUrlStr ,err) in
             print(downloadUrlStr!)
             if let durl = downloadUrlStr {
                 clip3.thumbnail_url = durl
-                FirebaseService.shared.addMontage(montage: montage2, user_id: user.uid, completionHandler: { (err) in
+                self.networkService.addMontage(montage: montage2, user_id: user.uid, completionHandler: { (err) in
                     if err != nil {
                         print(err!)
                     }
@@ -171,13 +174,13 @@ extension AppDelegate: AuthDelegate {
             }
         })
         //test saving
-        FirebaseService.shared.addMontage(montage: montage1, user_id: user.uid) { (error) in
+        networkService.addMontage(montage: montage1, user_id: user.uid) { (error) in
             if error != nil {
                 print("fail")
                 return
             }
             print("yay, it worked")
-            FirebaseService.shared.fetchMontages(user_id: user.uid) { (montages, err) in
+            self.networkService.fetchMontages(user_id: user.uid) { (montages, err) in
                 montages.forEach({
                     print($0)
                 })

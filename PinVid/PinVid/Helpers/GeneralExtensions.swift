@@ -19,4 +19,7 @@ extension UIView {
     }
 }
 
+protocol ViewControllerInstantiable {
+    
+}
 
