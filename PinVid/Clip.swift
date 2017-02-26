@@ -13,10 +13,22 @@ class Clip {
     var end_time: Int?
     var thumbnail_url: String?
     
+    init(dict: NSDictionary) {
+        self.start_time = dict["start_time"] as! Int
+        self.end_time = dict["end_time"] as! Int
+        self.thumbnail_url = dict["thumbnail_url"] as? String
+    }
+    
     init(json: SwiftyJSON.JSON) {
         self.start_time = json["start_time"].int
         self.end_time = json["end_time"].int
         self.thumbnail_url = json["thumbnail_url"].string
+    }
+    
+    init(startTime: Int, endTime: Int, thumbNailUrl: String?) {
+        self.start_time = startTime
+        self.end_time = endTime
+        self.thumbnail_url = thumbNailUrl
     }
     
     func toString() -> String {
