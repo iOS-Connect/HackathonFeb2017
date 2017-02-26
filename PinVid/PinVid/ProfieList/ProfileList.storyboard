@@ -33,7 +33,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileClipCell" id="afO-hg-rsl" customClass="ProfileClipCell" customModule="PinVid" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="221" height="246"/>
+                                        <rect key="frame" x="77" y="0.0" width="221" height="246"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="221" height="246"/>
@@ -65,6 +65,7 @@
                                         </view>
                                         <constraints>
                                             <constraint firstItem="jGd-LH-mSu" firstAttribute="leading" secondItem="afO-hg-rsl" secondAttribute="leading" id="3t2-BX-R2T"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="5MT-dD-CXa" secondAttribute="bottom" constant="48" id="AJU-X7-yX5"/>
                                             <constraint firstAttribute="trailing" secondItem="jGd-LH-mSu" secondAttribute="trailing" id="ShF-md-Lv9"/>
                                             <constraint firstItem="jGd-LH-mSu" firstAttribute="top" secondItem="afO-hg-rsl" secondAttribute="top" id="bwq-xC-wH1"/>
                                             <constraint firstItem="5MT-dD-CXa" firstAttribute="leading" secondItem="afO-hg-rsl" secondAttribute="leadingMargin" constant="3" id="e2M-kJ-851"/>
@@ -93,6 +94,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YqI-K4-RnD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="36" y="120.98950524737631"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="5cg-5O-Zdg">
+            <objects>
+                <viewController storyboardIdentifier="DetailViewController" id="fAb-qe-bqa" customClass="DetailViewController" customModule="PinVid" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fKX-l8-Rqi"/>
+                        <viewControllerLayoutGuide type="bottom" id="4lm-NG-mmn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CAt-gO-PDj">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elm-BY-ahy">
+                                <rect key="frame" x="165.5" y="323" width="44" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="elm-BY-ahy" firstAttribute="centerX" secondItem="CAt-gO-PDj" secondAttribute="centerX" id="dhO-CP-fzb"/>
+                            <constraint firstItem="elm-BY-ahy" firstAttribute="centerY" secondItem="CAt-gO-PDj" secondAttribute="centerY" id="huX-hW-kjZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="O6X-Jy-zAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="747" y="119"/>
         </scene>
     </scenes>
 </document>
