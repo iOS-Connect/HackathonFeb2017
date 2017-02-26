@@ -184,7 +184,6 @@
 				48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */,
 				1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */,
 				B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */,
-				F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */,
 				F68D49BF1E6230F900D1F4AA /* Assets.bundle */,
 			);
 			name = Frameworks;
@@ -225,6 +224,7 @@
 		D139D6F51E6151C00061F6E8 /* PinVid */ = {
 			isa = PBXGroup;
 			children = (
+				F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */,
 				AA58BAB41E621A670046EF0F /* Models */,
 				0D388AEA1E620C8B00502510 /* Services */,
 				0D388AE51E620C5800502510 /* CreatClips */,
@@ -717,7 +717,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PinVid.PinVid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "PinVid-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinVid/PinVid-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -733,7 +733,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = PinVid.PinVid;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "PinVid-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "PinVid/PinVid-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
