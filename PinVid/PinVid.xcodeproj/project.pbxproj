@@ -33,6 +33,8 @@
 		F68D49B51E6218B000D1F4AA /* ClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B41E6218B000D1F4AA /* ClipsView.swift */; };
 		F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B61E6218C100D1F4AA /* ScrubberView.swift */; };
 		F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B81E621C5400D1F4AA /* RangeSlider.swift */; };
+		F68D49BE1E6230D600D1F4AA /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */; };
+		F68D49C01E6230F900D1F4AA /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68D49BF1E6230F900D1F4AA /* Assets.bundle */; };
 		F86B560F3A53C5190F59A803 /* Pods_PinVidTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -96,6 +98,10 @@
 		F68D49B41E6218B000D1F4AA /* ClipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipsView.swift; sourceTree = "<group>"; };
 		F68D49B61E6218C100D1F4AA /* ScrubberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubberView.swift; sourceTree = "<group>"; };
 		F68D49B81E621C5400D1F4AA /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSlider.swift; path = CreateClips/RangeSlider.swift; sourceTree = "<group>"; };
+		F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinVid-Bridging-Header.h"; sourceTree = "<group>"; };
+		F68D49BC1E6230D600D1F4AA /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		F68D49BF1E6230F900D1F4AA /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,9 +191,12 @@
 		6BFFDA335E0C46A251A35033 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F68D49BC1E6230D600D1F4AA /* YTPlayerView.h */,
+				F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */,
 				48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */,
 				1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */,
 				B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */,
+				F68D49BF1E6230F900D1F4AA /* Assets.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,7 +210,6 @@
 			name = Models;
 			path = ..;
 			sourceTree = "<group>";
-
 		};
 		D139D6EA1E6151C00061F6E8 = {
 			isa = PBXGroup;
@@ -228,6 +236,7 @@
 		D139D6F51E6151C00061F6E8 /* PinVid */ = {
 			isa = PBXGroup;
 			children = (
+				F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */,
 				AA58BAB41E621A670046EF0F /* Models */,
 				0D388AEA1E620C8B00502510 /* Services */,
 				0D388AE51E620C5800502510 /* CreatClips */,
@@ -386,6 +395,7 @@
 				0D388AE01E620C0D00502510 /* ProfileList.storyboard in Resources */,
 				D139D7281E620B4C0061F6E8 /* GoogleService-Info.plist in Resources */,
 				D139D7041E6151C00061F6E8 /* LaunchScreen.storyboard in Resources */,
+				F68D49C01E6230F900D1F4AA /* Assets.bundle in Resources */,
 				D139D7011E6151C00061F6E8 /* Assets.xcassets in Resources */,
 				0D388AEC1E620CAE00502510 /* ReadMe.txt in Resources */,
 				D139D6FC1E6151C00061F6E8 /* Main.storyboard in Resources */,
@@ -556,6 +566,7 @@
 				F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */,
 				D139D6FF1E6151C00061F6E8 /* PinVid.xcdatamodeld in Sources */,
 				D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */,
+				F68D49BE1E6230D600D1F4AA /* YTPlayerView.m in Sources */,
 				AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */,
 				D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */,
 				0D388AF31E622FF300502510 /* EmailViewController.m in Sources */,
