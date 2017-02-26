@@ -19,6 +19,23 @@ extension UIView {
     }
 }
 
+protocol ViewControllerInstantiable {
+    //set id in storyboard, and call this 
+    static func instantiate(controllerType type: UIViewController.Type) -> UIViewController
+}
+
+extension UIViewController: ViewControllerInstantiable {
+    static func instantiate(controllerType type: UIViewController.Type) -> UIViewController {
+        let controllerName = String(describing: type.self)
+        guard let controllerEnum = Controllers.init(rawValue: controllerName) else {
+            fatalError("Busted!!: no suct controller defined")
+        }
+        let storyboard = UIStoryboard(name: controllerEnum.storyboardName, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: controllerEnum.identifier) //cast back to what you want
+        return vc
+    }
+}
+
 enum Controllers: String {
     //capitalize on purpose to use rawdata as id
     case ProfileListViewController, EmailViewController, YouTubeViewController, CreateClipsViewController, DetailViewController, ViewController
@@ -27,7 +44,6 @@ enum Controllers: String {
         default: return self.rawValue
         }
     }
-    
     var storyboardName: String {
         switch self {
         case .ProfileListViewController, .DetailViewController: return "ProfileList"
@@ -37,3 +53,10 @@ enum Controllers: String {
         }
     }
 }
+
+
+
+
+
+
+

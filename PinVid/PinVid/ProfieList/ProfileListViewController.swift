@@ -50,16 +50,7 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailVC = UIStoryboard(name: "ProfileList", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController")
+        let detailVC = UIViewController.instantiate(controllerType: DetailViewController.self)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
-}
-
-extension ProfileListViewController {
-    static func instantiate() -> ProfileListViewController {
-        let storyboard = UIStoryboard(name: Controllers.ProfileListViewController.storyboardName, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: Controllers.ProfileListViewController.identifier) as! ProfileListViewController
-        return vc
-    }
-
 }
