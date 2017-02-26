@@ -15,7 +15,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PinVid-Swift.h"
+//#import "PinVid-Swift.h"
 
 
 NS_ASSUME_NONNULL_BEGIN

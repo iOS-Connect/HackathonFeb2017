@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol CreateClipDelegate {
+    func newclipReady()
+}
 
 class CreateClipsViewController: UIViewController, VideoViewDelegate {
 
@@ -17,6 +20,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     var videoUrl: String = ""
     var montage = Montage()
     let networkService = UIApplication.shared.networkService
+    var delegate: CreateClipDelegate!
     override func viewDidLoad() {
         super.viewDidLoad()
         videoUrl = "https://www.youtube.com/watch?v=" + videoId
@@ -48,7 +52,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         self.view.addSubview(videoView)
         
         scrubberView.translatesAutoresizingMaskIntoConstraints = false
-        scrubberView.backgroundColor = UIColor.cyan
+        scrubberView.backgroundColor = UIColor.black
         self.view.addSubview(scrubberView)
         
         clipsView.translatesAutoresizingMaskIntoConstraints = false
@@ -128,6 +132,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func addClipPressed(sender:UIButton){
         if let startTime = scrubberView.prevStartTime, let endTime = scrubberView.prevEndTime {
             print("clipped: start \(startTime) | end \(endTime)")
+
             guard let videoImageData = UIImagePNGRepresentation(videoView.snapshotImage) else {
                 print("error: no snapshot img")
                 return
@@ -143,11 +148,13 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
                         if err != nil {
                             print(err!)
                         }
+                        self.delegate.newclipReady()
                         self.navigationController?.popViewController(animated: true)
                     })
                 }
             })
-            
+
+            CoreDataManager.sharedInstance.addClip(startTime: startTime, endTime: endTime)
         } else {
             print("need to customized both start and end time")
         }
