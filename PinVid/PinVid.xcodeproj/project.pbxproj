@@ -33,6 +33,11 @@
 		D139D70F1E6151C10061F6E8 /* PinVidTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139D70E1E6151C10061F6E8 /* PinVidTests.swift */; };
 		D139D71A1E6151C10061F6E8 /* PinVidUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139D7191E6151C10061F6E8 /* PinVidUITests.swift */; };
 		D139D7281E620B4C0061F6E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */; };
+		D139D74B1E624EB00061F6E8 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D139D74A1E624EB00061F6E8 /* CoreDataManager.swift */; };
+		D1F5D33C1E62939100A56F67 /* ClipData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5D3381E62939100A56F67 /* ClipData+CoreDataClass.swift */; };
+		D1F5D33D1E62939100A56F67 /* ClipData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5D3391E62939100A56F67 /* ClipData+CoreDataProperties.swift */; };
+		D1F5D33E1E62939100A56F67 /* MontageData+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5D33A1E62939100A56F67 /* MontageData+CoreDataClass.swift */; };
+		D1F5D33F1E62939100A56F67 /* MontageData+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1F5D33B1E62939100A56F67 /* MontageData+CoreDataProperties.swift */; };
 		F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B21E62178000D1F4AA /* VideoView.swift */; };
 		F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B61E6218C100D1F4AA /* ScrubberView.swift */; };
 		F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B81E621C5400D1F4AA /* RangeSlider.swift */; };
@@ -102,6 +107,11 @@
 		D139D7191E6151C10061F6E8 /* PinVidUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinVidUITests.swift; sourceTree = "<group>"; };
 		D139D71B1E6151C10061F6E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D139D74A1E624EB00061F6E8 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D1F5D3381E62939100A56F67 /* ClipData+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClipData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D1F5D3391E62939100A56F67 /* ClipData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ClipData+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		D1F5D33A1E62939100A56F67 /* MontageData+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MontageData+CoreDataClass.swift"; sourceTree = "<group>"; };
+		D1F5D33B1E62939100A56F67 /* MontageData+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MontageData+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F4220DAD87F0B89269C866BA /* Pods-PinVidUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidUITests/Pods-PinVidUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F68D49B21E62178000D1F4AA /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VideoView.swift; path = CreateClips/VideoView.swift; sourceTree = "<group>"; };
 		F68D49B61E6218C100D1F4AA /* ScrubberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubberView.swift; sourceTree = "<group>"; };
@@ -256,6 +266,7 @@
 		D139D6F51E6151C00061F6E8 /* PinVid */ = {
 			isa = PBXGroup;
 			children = (
+				D1F5D32F1E625E9E00A56F67 /* CoreData */,
 				0D0633B11E6281D900D6A16A /* Helpers */,
 				F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */,
 				AA58BAB41E621A670046EF0F /* Models */,
@@ -271,7 +282,6 @@
 				D139D7021E6151C00061F6E8 /* LaunchScreen.storyboard */,
 				D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */,
 				D139D7051E6151C00061F6E8 /* Info.plist */,
-				D139D6FD1E6151C00061F6E8 /* PinVid.xcdatamodeld */,
 				0D388AEB1E620CAE00502510 /* ReadMe.txt */,
 			);
 			path = PinVid;
@@ -293,6 +303,19 @@
 				D139D71B1E6151C10061F6E8 /* Info.plist */,
 			);
 			path = PinVidUITests;
+			sourceTree = "<group>";
+		};
+		D1F5D32F1E625E9E00A56F67 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				D1F5D3381E62939100A56F67 /* ClipData+CoreDataClass.swift */,
+				D1F5D3391E62939100A56F67 /* ClipData+CoreDataProperties.swift */,
+				D1F5D33A1E62939100A56F67 /* MontageData+CoreDataClass.swift */,
+				D1F5D33B1E62939100A56F67 /* MontageData+CoreDataProperties.swift */,
+				D139D6FD1E6151C00061F6E8 /* PinVid.xcdatamodeld */,
+				D139D74A1E624EB00061F6E8 /* CoreDataManager.swift */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -588,14 +611,17 @@
 				F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */,
 				D139D6FF1E6151C00061F6E8 /* PinVid.xcdatamodeld in Sources */,
 				D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */,
+				D1F5D33C1E62939100A56F67 /* ClipData+CoreDataClass.swift in Sources */,
 				F68D49BE1E6230D600D1F4AA /* YTPlayerView.m in Sources */,
 				AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */,
 				D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */,
+				D139D74B1E624EB00061F6E8 /* CoreDataManager.swift in Sources */,
 				0D388AF31E622FF300502510 /* EmailViewController.m in Sources */,
 				F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */,
 				F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */,
 				0D0633CF1E63547D00D6A16A /* DetailViewController.swift in Sources */,
 				171E1E7B1E62768A00AA007D /* YouTubeViewController.swift in Sources */,
+				D1F5D33E1E62939100A56F67 /* MontageData+CoreDataClass.swift in Sources */,
 				AA58BAB81E621A930046EF0F /* Clip.swift in Sources */,
 				0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */,
 				0DE134EB1E625A47004575BB /* ProfileClipCell.swift in Sources */,
@@ -603,6 +629,8 @@
 				0D0633B31E6281FA00D6A16A /* GeneralExtensions.swift in Sources */,
 				0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */,
 				0D388AE71E620C7700502510 /* CreateClipsViewController.swift in Sources */,
+				D1F5D33D1E62939100A56F67 /* ClipData+CoreDataProperties.swift in Sources */,
+				D1F5D33F1E62939100A56F67 /* MontageData+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

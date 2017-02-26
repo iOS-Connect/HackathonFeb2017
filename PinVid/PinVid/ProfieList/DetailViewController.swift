@@ -9,11 +9,9 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    var montage: Montage!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
