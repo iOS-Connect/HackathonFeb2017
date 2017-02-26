@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0633B31E6281FA00D6A16A /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0633B21E6281FA00D6A16A /* GeneralExtensions.swift */; };
 		0D388ADE1E620BF900502510 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D388ADD1E620BF900502510 /* Auth.storyboard */; };
 		0D388AE01E620C0D00502510 /* ProfileList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D388ADF1E620C0D00502510 /* ProfileList.storyboard */; };
 		0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AE31E620C5500502510 /* ProfileListViewController.swift */; };
@@ -58,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0633B21E6281FA00D6A16A /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = Helpers/GeneralExtensions.swift; sourceTree = "<group>"; };
+		0D0633B41E62906E00D6A16A /* YouTubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		0D388ADD1E620BF900502510 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		0D388ADF1E620C0D00502510 /* ProfileList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileList.storyboard; path = ProfieList/ProfileList.storyboard; sourceTree = "<group>"; };
 		0D388AE31E620C5500502510 /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileListViewController.swift; path = ProfieList/ProfileListViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +139,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0633B11E6281D900D6A16A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0D0633B21E6281FA00D6A16A /* GeneralExtensions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		0D388ADB1E620B8A00502510 /* ProfileList */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +173,7 @@
 		0D388AE51E620C5800502510 /* CreatClips */ = {
 			isa = PBXGroup;
 			children = (
+				0D0633B41E62906E00D6A16A /* YouTubeViewController.swift */,
 				0D388AE61E620C7700502510 /* CreateClipsViewController.swift */,
 				F68D49B61E6218C100D1F4AA /* ScrubberView.swift */,
 				F68D49B81E621C5400D1F4AA /* RangeSlider.swift */,
@@ -241,6 +253,7 @@
 		D139D6F51E6151C00061F6E8 /* PinVid */ = {
 			isa = PBXGroup;
 			children = (
+				0D0633B11E6281D900D6A16A /* Helpers */,
 				F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */,
 				AA58BAB41E621A670046EF0F /* Models */,
 				0D388AEA1E620C8B00502510 /* Services */,
@@ -582,6 +595,7 @@
 				0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */,
 				0DE134EB1E625A47004575BB /* ProfileClipCell.swift in Sources */,
 				0D388AF21E622FF300502510 /* UIViewController+Alerts.m in Sources */,
+				0D0633B31E6281FA00D6A16A /* GeneralExtensions.swift in Sources */,
 				0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */,
 				0D388AE71E620C7700502510 /* CreateClipsViewController.swift in Sources */,
 			);

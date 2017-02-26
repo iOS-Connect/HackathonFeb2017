@@ -53,7 +53,7 @@ class Montage : CustomStringConvertible {
 
         var clipsStr = " "
         clipsStr = clips.reduce(clipsStr, { (res, clip) -> String in
-            clipsStr += clip.toString()
+            clipsStr += clip.description
             return clipsStr
         })
         return "Montage ID: \(String(describing: montage_id))" +
