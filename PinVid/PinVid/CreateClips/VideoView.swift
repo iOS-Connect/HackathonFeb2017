@@ -8,11 +8,15 @@
 
 import UIKit
 
+protocol VideoViewDelegate:class {
+    func ready(playerView:YTPlayerView)
+}
+
 class VideoView: UIView, YTPlayerViewDelegate {
 
+    weak var delegate:VideoViewDelegate?
     var player:YTPlayerView!
-    let playlistID = "PLhBgTdAWkxeCMHYCQ0uuLyhydRJGDRNo5"
-    let playerVars = ["controls":1,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1]
+    let playerVars = ["controls":0,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1, "autoplay":1]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,10 +25,7 @@ class VideoView: UIView, YTPlayerViewDelegate {
         self.player.delegate = self
         addSubview(player)
     
-        
-//        player.load(withVideoId: "TgqiSBxvdws", playerVars: ["autoplay":1])
         player.load(withVideoId: "TgqiSBxvdws", playerVars:playerVars)
-        player.playVideo()
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(receivedPlaybackStartedNotification(notification:)), name: NSNotification.Name(rawValue: "Playback started"), object: nil)
     }
@@ -46,5 +47,10 @@ class VideoView: UIView, YTPlayerViewDelegate {
         player.topAnchor.constraint(equalTo: topAnchor).isActive = true
         player.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
         
+    }
+    
+    func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
+        playerView.playVideo()
+        delegate?.ready(playerView: playerView)
     }
 }

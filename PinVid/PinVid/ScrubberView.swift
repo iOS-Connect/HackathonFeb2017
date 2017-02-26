@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol scrubberDelegate:class {
+    func maximumValue() -> Double
+}
+
 class ScrubberView: UIView {
 
+    weak var delegate:scrubberDelegate?
     var rangeSlider: RangeSlider!
     var addClip:UIButton!
     var startTimeLabel:UILabel!
@@ -21,8 +26,10 @@ class ScrubberView: UIView {
         rangeSlider = RangeSlider(frame: frame)
         rangeSlider.translatesAutoresizingMaskIntoConstraints = false
         addSubview(rangeSlider)
-        rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged),
-                              for: .valueChanged)
+        rangeSlider.minimumValue = 0
+        rangeSlider.maximumValue = 10
+//        rangeSlider.lowerValue = 0.5
+//        rangeSlider.upperValue = 0.7
         
         addClip = UIButton()
         addClip.translatesAutoresizingMaskIntoConstraints = false
@@ -54,27 +61,24 @@ class ScrubberView: UIView {
         
         rangeSlider.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         rangeSlider.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        rangeSlider.topAnchor.constraint(equalTo: topAnchor, constant: self.frame.height / 3).isActive = true
+        rangeSlider.topAnchor.constraint(equalTo: topAnchor).isActive = true
         rangeSlider.heightAnchor.constraint(equalToConstant: self.frame.height / 3).isActive = true
-        
-        addClip.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        addClip.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        addClip.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
-        addClip.heightAnchor.constraint(equalToConstant: self.frame.height / 3).isActive = true
         
         startTimeLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         startTimeLabel.trailingAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        startTimeLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        startTimeLabel.bottomAnchor.constraint(equalTo: rangeSlider.topAnchor).isActive = true
+        startTimeLabel.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
+        startTimeLabel.bottomAnchor.constraint(equalTo: addClip.topAnchor).isActive = true
 
         endTimeLabel.leadingAnchor.constraint(equalTo: centerXAnchor).isActive = true
         endTimeLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        endTimeLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        endTimeLabel.bottomAnchor.constraint(equalTo: rangeSlider.topAnchor).isActive = true
-    }
-    
-    func rangeSliderValueChanged(){
-        print("lowerVal = \(rangeSlider.lowerValue) | heigherVal = \(rangeSlider.upperValue)")
+        endTimeLabel.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor).isActive = true
+        endTimeLabel.bottomAnchor.constraint(equalTo: addClip.topAnchor).isActive = true
+
+        addClip.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        addClip.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        addClip.topAnchor.constraint(equalTo: rangeSlider.bottomAnchor, constant: self.frame.height / 3).isActive = true
+        addClip.heightAnchor.constraint(equalToConstant: self.frame.height / 3).isActive = true
+        
     }
     
     func addClipPressed(sender:UIButton){

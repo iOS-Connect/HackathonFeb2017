@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateClipsViewController: UIViewController {
+class CreateClipsViewController: UIViewController, VideoViewDelegate {
 
     var url:NSURL!
     var startTime:Int!
@@ -23,6 +23,10 @@ class CreateClipsViewController: UIViewController {
         setupNav()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        scrubberView.rangeSlider.addTarget(self, action: #selector(rangeSliderValueChanged(sender:)), for: .valueChanged)
+    }
+    
     func setupNav() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(addTapped))
     }
@@ -31,6 +35,7 @@ class CreateClipsViewController: UIViewController {
         videoView = VideoView(frame: .zero)
         videoView.translatesAutoresizingMaskIntoConstraints = false
         videoView.backgroundColor = UIColor.orange
+        videoView.delegate = self
         self.view.addSubview(videoView)
         
         scrubberView.translatesAutoresizingMaskIntoConstraints = false
@@ -57,10 +62,20 @@ class CreateClipsViewController: UIViewController {
         clipsView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
         clipsView.heightAnchor.constraint(equalToConstant: self.view.frame.height / 5).isActive = true
         clipsView.bottomAnchor.constraint(equalTo: bottomLayoutGuide.topAnchor).isActive = true
-        
     }
 
     func addTapped(sender: UIButton) {
         print("done")
+    }
+    
+    func rangeSliderValueChanged(sender:RangeSlider){
+        print("lowerVal = \(sender.lowerValue) | higherVal = \(sender.upperValue)")
+        videoView.player.playVideo(at: Int32(sender.lowerValue))
+    }
+    
+    func ready(playerView: YTPlayerView) {
+        scrubberView.rangeSlider.maximumValue = playerView.duration()
+        scrubberView.rangeSlider.upperValue = playerView.duration() / 3.0
+        scrubberView.rangeSlider.lowerValue = playerView.duration() * 2.0 / 3.0
     }
 }
