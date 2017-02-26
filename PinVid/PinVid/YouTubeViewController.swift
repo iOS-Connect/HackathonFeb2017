@@ -16,7 +16,6 @@ class YouTubeViewController: UIViewController {
     @IBAction func clickAction(_ sender: UIButton) {
         let res = webView.stringByEvaluatingJavaScript(from: js)
         print(res ?? "no result")
-        
         //call your function you get an url
     }
     

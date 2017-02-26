@@ -131,7 +131,6 @@ extension AppDelegate: AuthDelegate {
         testSaveAndFetch(user)
         route()
     }
-
     func testSaveAndFetch(_ user: FIRUser) {
         let montage1 = Montage()
         montage1.author = "Kei Sakaguchi"
