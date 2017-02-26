@@ -56,20 +56,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
+    
     func route() {
-        let vc: UIViewController!
-        //show login if not registered.
-        if let user = FIRAuth.auth()?.currentUser {
-            vc = ProfileListViewController.instantiate()
+        let user = FIRAuth.auth()?.currentUser
+        saveUserIDToDefault(user: user)
+        presentCorrectViewController(user: user)
+    }
+    
+    func saveUserIDToDefault(user: FIRUser?) {
+        if let user = user {
             let userid = user.uid
             UserDefaults.standard.set(userid, forKey: AppDelegate.Constants.userId)
             UserDefaults.standard.synchronize()
+        }
+    }
+    
+    func presentCorrectViewController(user: FIRUser?) {
+        let vc: UIViewController
+        if let _ = user {
+            vc = ProfileListViewController.instantiate()
         } else {
             vc = EmailViewController.instantiate()
         }
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }
-    
 }
 
 @objc protocol AuthDelegate {
