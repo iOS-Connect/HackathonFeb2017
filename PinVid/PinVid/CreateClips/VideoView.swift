@@ -10,6 +10,8 @@ import UIKit
 
 protocol VideoViewDelegate:class {
     func ready(playerView:YTPlayerView)
+    func getEndTime() -> Float?
+    func getStartTime() -> Float?
 }
 
 class VideoView: UIView, YTPlayerViewDelegate {
@@ -18,6 +20,7 @@ class VideoView: UIView, YTPlayerViewDelegate {
     var player:YTPlayerView!
     var videoId:String = "TgqiSBxvdws"
     let playerVars = ["controls":0,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1, "autoplay":1]
+    var mainPlayTime = 0.0
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -44,5 +47,13 @@ class VideoView: UIView, YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
         playerView.playVideo()
         delegate?.ready(playerView: playerView)
+    }
+    
+    func playerView(_ playerView: YTPlayerView, didPlayTime playTime: Float) {
+        mainPlayTime = Double(playTime)
+        if delegate?.getEndTime() != nil && delegate?.getStartTime() != nil && playTime >= (delegate?.getEndTime())! {
+            print("seek to beginning")
+            player.seek(toSeconds: (delegate?.getStartTime())!, allowSeekAhead: true)
+        }
     }
 }
