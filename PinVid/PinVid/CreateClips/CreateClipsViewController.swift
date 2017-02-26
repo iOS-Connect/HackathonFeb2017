@@ -14,11 +14,14 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     var videoView: VideoView!
     var scrubberView = ScrubberView()
     var clipsView = ClipsView()
-    
+    var videoUrl: String = ""
+    var montage = Montage()
+    let networkService = UIApplication.shared.networkService
     override func viewDidLoad() {
         super.viewDidLoad()
+        videoUrl = "https://www.youtube.com/watch?v=" + videoId
         setupView()
-        setupNav()
+        //setupNav()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -125,7 +128,25 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func addClipPressed(sender:UIButton){
         if let startTime = scrubberView.prevStartTime, let endTime = scrubberView.prevEndTime {
             print("clipped: start \(startTime) | end \(endTime)")
+            guard let videoImageData = UIImagePNGRepresentation(videoView.snapshotImage) else {
+                print("error: no snapshot img")
+                return
+            }
             
+            let clip = Clip(startTime: Int(startTime), endTime: Int(endTime), thumbNailUrl: nil)
+            montage.clips.append(clip)
+            networkService.saveImage(videoImageData, withName: "\(clip.thumbnailNameId).png", completionHandler: { (downloadUrlStr ,err) in
+                print(downloadUrlStr!)
+                if let durl = downloadUrlStr {
+                    clip.thumbnail_url = durl
+                    self.networkService.addMontage(montage: self.montage, user_id: self.networkService.userId, completionHandler: { (err) in
+                        if err != nil {
+                            print(err!)
+                        }
+                        self.navigationController?.popViewController(animated: true)
+                    })
+                }
+            })
             
         } else {
             print("need to customized both start and end time")
