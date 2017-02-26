@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 
 class ProfileClipCell: UICollectionViewCell {
+    @IBOutlet weak var constraint: NSLayoutConstraint!
     
     static let identifier = "ProfileClipCell"
     
