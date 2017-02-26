@@ -52,7 +52,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         self.view.addSubview(videoView)
         
         scrubberView.translatesAutoresizingMaskIntoConstraints = false
-        scrubberView.backgroundColor = UIColor.cyan
+        scrubberView.backgroundColor = UIColor.black
         self.view.addSubview(scrubberView)
         
         clipsView.translatesAutoresizingMaskIntoConstraints = false
@@ -132,6 +132,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     func addClipPressed(sender:UIButton){
         if let startTime = scrubberView.prevStartTime, let endTime = scrubberView.prevEndTime {
             print("clipped: start \(startTime) | end \(endTime)")
+
             guard let videoImageData = UIImagePNGRepresentation(videoView.snapshotImage) else {
                 print("error: no snapshot img")
                 return
@@ -154,7 +155,8 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
                     })
                 }
             })
-            
+
+            CoreDataManager.sharedInstance.addClip(startTime: startTime, endTime: endTime)
         } else {
             print("need to customized both start and end time")
         }
