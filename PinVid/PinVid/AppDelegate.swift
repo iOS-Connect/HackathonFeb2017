@@ -24,11 +24,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        self.saveContext()
+        CoreDataManager.sharedInstance.saveContext()
     }
 
     // MARK: - Core Data stack
-
+    @available(*, deprecated: 1.0)
     lazy var persistentContainer: NSPersistentContainer = {
         
         let container = NSPersistentContainer(name: "PinVid")
@@ -42,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data Saving support
 
+    @available(*, deprecated: 1.0)
     func saveContext () {
         let context = persistentContainer.viewContext
         if context.hasChanges {

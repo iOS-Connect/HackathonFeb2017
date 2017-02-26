@@ -6,12 +6,39 @@ class CoreDataManager {
     
     static let sharedInstance = CoreDataManager()
     
-    func addVideo() {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    lazy var persistentContainer: NSPersistentContainer = {
         
-        let managedContext = appDelegate.persistentContainer.viewContext
+        let container = NSPersistentContainer(name: "PinVid")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+
+    
+    func saveContext() {
+//        appDelegate.saveContext()
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    func addVideo() {
+
+        
+//        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = persistentContainer.viewContext
         
         let entity = NSEntityDescription.entity(forEntityName: "Video", in: managedContext)
         
@@ -28,11 +55,8 @@ class CoreDataManager {
     ///Featch all video when app opens
     func fetchVideo() -> [NSManagedObject] {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return [NSManagedObject]()
-        }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
+//        let managedContext = appDelegate.persistentContainer.viewContext
+        let managedContext = persistentContainer.viewContext
 
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Video")
         do {
