@@ -16,6 +16,7 @@ class VideoView: UIView, YTPlayerViewDelegate {
 
     weak var delegate:VideoViewDelegate?
     var player:YTPlayerView!
+    var videoId:String = "TgqiSBxvdws"
     let playerVars = ["controls":0,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1, "autoplay":1]
     
     override init(frame: CGRect) {
@@ -25,16 +26,7 @@ class VideoView: UIView, YTPlayerViewDelegate {
         self.player.delegate = self
         addSubview(player)
     
-        player.load(withVideoId: "TgqiSBxvdws", playerVars:playerVars)
-        
-//        NotificationCenter.default.addObserver(self, selector: #selector(receivedPlaybackStartedNotification(notification:)), name: NSNotification.Name(rawValue: "Playback started"), object: nil)
-    }
-    
-    func receivedPlaybackStartedNotification(notification:NSNotification){
-        print("receivedPlaybackStartedNotification")
-//        if notification.name == "Playback started" && notification.object != self {
-//            player.pauseVideo()
-//        }
+        player.load(withVideoId: videoId, playerVars:playerVars)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -69,13 +69,24 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     }
     
     func rangeSliderValueChanged(sender:RangeSlider){
-        print("lowerVal = \(sender.lowerValue) | higherVal = \(sender.upperValue)")
-        videoView.player.playVideo(at: Int32(sender.lowerValue))
+        
+        if scrubberView.prevEndTime != sender.upperValue {
+            scrubberView.prevEndTime = sender.upperValue
+            videoView.player.seek(toSeconds: Float(sender.upperValue), allowSeekAhead: true)
+            print("updated end time to \(scrubberView.prevEndTime) - 3 sec")
+        }
+        
+        if scrubberView.prevStartTime != sender.lowerValue {
+            scrubberView.prevStartTime = sender.lowerValue
+            videoView.player.seek(toSeconds: Float(sender.lowerValue), allowSeekAhead: true)
+            print("updated start time to \(scrubberView.prevStartTime)")
+        }
     }
     
     func ready(playerView: YTPlayerView) {
         scrubberView.rangeSlider.maximumValue = playerView.duration()
-        scrubberView.rangeSlider.upperValue = playerView.duration() / 3.0
-        scrubberView.rangeSlider.lowerValue = playerView.duration() * 2.0 / 3.0
+        
+        scrubberView.rangeSlider.upperValue = playerView.duration() * 2.0 / 3.0
+        scrubberView.rangeSlider.lowerValue = playerView.duration() / 3.0
     }
 }

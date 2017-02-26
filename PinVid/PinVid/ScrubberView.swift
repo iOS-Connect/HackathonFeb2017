@@ -20,16 +20,15 @@ class ScrubberView: UIView {
     var startTimeLabel:UILabel!
     var endTimeLabel:UILabel!
     
+    var prevStartTime:Double?
+    var prevEndTime:Double?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         rangeSlider = RangeSlider(frame: frame)
         rangeSlider.translatesAutoresizingMaskIntoConstraints = false
         addSubview(rangeSlider)
-        rangeSlider.minimumValue = 0
-        rangeSlider.maximumValue = 10
-//        rangeSlider.lowerValue = 0.5
-//        rangeSlider.upperValue = 0.7
         
         addClip = UIButton()
         addClip.translatesAutoresizingMaskIntoConstraints = false
@@ -82,6 +81,11 @@ class ScrubberView: UIView {
     }
     
     func addClipPressed(sender:UIButton){
-        print("addclip")
+        if let startTime = prevStartTime, let endTime = prevEndTime {
+            print("clipped: start \(startTime) | end \(endTime)")
+        } else {
+            print("need to customized both start and end time")
+        }
+
     }
 }
