@@ -18,7 +18,8 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
         collectionView.collectionViewLayout = flowLayout
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        flowLayout.estimatedItemSize = CGSize(width: 100, height: 100)
+
         guard let userId = UserDefaults.standard.value(forKey: AppDelegate.Constants.userId) as? String else {
             fatalError("no userId found")
         }
@@ -32,15 +33,12 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
                 self.collectionView.reloadData()
             }
         }
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return self.collectionView.bounds.size
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileClipCell.identifier, for: indexPath) as! ProfileClipCell
         cell.montage = montages[indexPath.item]
+        cell.constraint.constant = UIScreen.main.bounds.size.width
         cell.updateUI()
         return cell
     }
