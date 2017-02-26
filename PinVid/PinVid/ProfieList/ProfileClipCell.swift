@@ -19,7 +19,7 @@ class ProfileClipCell: UICollectionViewCell {
     var montage: Montage! //must set
     func updateUI() {
         
-        if let thumbUrl = montage.clips[0].thumbnail_url, let thumbURL = URL(string: thumbUrl) {
+        if let thumbUrl = montage.clips[0].thumbnailNameId, let thumbURL = URL(string: thumbUrl) {
             imageView.sd_setImage(with: thumbURL)
             
         }

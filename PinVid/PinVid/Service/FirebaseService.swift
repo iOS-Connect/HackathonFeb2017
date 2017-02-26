@@ -10,12 +10,15 @@ import UIKit
 import Firebase
 
 class FirebaseService: NSObject {
-//    class var server:BackupServer {   //computed property
-//        struct SingletonWrapper {
-//            static let singleton = BackupServer(name:"MainServer");   }
-//        return SingletonWrapper.singleton;
-//    }
     let ref: FIRDatabaseReference!
+    let storageRef: FIRStorageReference!
+    var userId: String {
+        guard let userId = UserDefaults.standard.value(forKey: AppDelegate.Constants.userId) as? String else {
+            fatalError("user not login")
+        }
+        return userId
+    }
+    
     class var shared: FirebaseService {
         struct SingletonService {
             static let singleton = FirebaseService()
@@ -24,6 +27,8 @@ class FirebaseService: NSObject {
     }
     private override init() {
         ref = FIRDatabase.database().reference()
+        storageRef = FIRStorage.storage().reference()
+
     }
     
     func addMontage(montage: Montage, user_id: String, completionHandler: @escaping (Error?) -> Void) {
@@ -33,10 +38,7 @@ class FirebaseService: NSObject {
             completionHandler(err)
         }
     }
-    
 
-
-   
     func fetchMontages(user_id: String, completionHandler: @escaping ([Montage], NSError?) -> Void) {
         ref.child("users/\(user_id)/montages").observeSingleEvent(of: .value, with: { snapshot in
             if let dict = snapshot.value as? NSDictionary {
@@ -55,3 +57,27 @@ class FirebaseService: NSObject {
     }
  
 }
+
+extension FirebaseService {
+    func saveImage(_ imageData: Data, withName name: String) {
+        //name format <userid>_<montageid>_<clipsIndex>.png
+        let imageName = name
+        
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

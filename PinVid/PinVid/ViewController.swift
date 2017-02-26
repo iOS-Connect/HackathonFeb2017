@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         try! FIRAuth.auth()!.signOut()
         //didLogout()
     }
-
+    
+    @IBAction func ytViewControllerClicked(_ sender: Any) {
+        self.navigationController?.pushViewController( UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "YouTubeViewController"), animated: true)
+    }
 }
 

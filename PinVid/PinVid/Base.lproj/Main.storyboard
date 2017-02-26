@@ -63,11 +63,20 @@
                                     <constraint firstAttribute="height" constant="205" id="wP4-CS-Tct"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fNh-Ix-vXe">
+                                <rect key="frame" x="28" y="365" width="116" height="30"/>
+                                <state key="normal" title="YtViewController"/>
+                                <connections>
+                                    <action selector="logoutClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dUx-jR-GKT"/>
+                                    <action selector="ytViewControllerClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="N6W-L5-kSK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E0T-EU-UK7" firstAttribute="leading" secondItem="0Gb-QZ-eib" secondAttribute="leading" id="4dO-31-lAP"/>
                             <constraint firstItem="Wem-bm-Ltl" firstAttribute="top" secondItem="E0T-EU-UK7" secondAttribute="bottom" constant="8" id="9kn-CZ-lul"/>
+                            <constraint firstItem="fNh-Ix-vXe" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="9nQ-aB-768"/>
                             <constraint firstItem="dDD-4N-Zso" firstAttribute="leading" secondItem="0Gb-QZ-eib" secondAttribute="leading" id="BXq-Xs-erd"/>
                             <constraint firstItem="0Gb-QZ-eib" firstAttribute="top" secondItem="s66-jq-ufu" secondAttribute="bottom" constant="8" id="C3e-7P-m2r"/>
                             <constraint firstAttribute="leadingMargin" secondItem="0Gb-QZ-eib" secondAttribute="leading" id="EYC-n5-Zio"/>
@@ -79,16 +88,53 @@
                             <constraint firstAttribute="trailingMargin" secondItem="s66-jq-ufu" secondAttribute="trailing" constant="33" id="WHO-LA-9aG"/>
                             <constraint firstAttribute="leadingMargin" secondItem="s66-jq-ufu" secondAttribute="leading" id="eML-QG-nwE"/>
                             <constraint firstItem="Wem-bm-Ltl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="12" id="rnP-id-OvV"/>
+                            <constraint firstItem="fNh-Ix-vXe" firstAttribute="top" secondItem="Wem-bm-Ltl" secondAttribute="bottom" constant="8" id="vEK-Px-wyY"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="s4x-y2-pHn"/>
                     <connections>
-                        <outlet property="imageView" destination="Fwm-Bj-qNz" id="kQF-ZM-Bmr"/>
+                        <outlet property="imageView" destination="Fwm-Bj-qNz" id="pJ4-Aq-WyB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="972" y="37.331334332833585"/>
+        </scene>
+        <!--You Tube View Controller-->
+        <scene sceneID="yTT-27-7lO">
+            <objects>
+                <viewController storyboardIdentifier="YouTubeViewController" id="geG-mE-LmW" customClass="YouTubeViewController" customModule="PinVid" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gFq-43-lzI"/>
+                        <viewControllerLayoutGuide type="bottom" id="eWe-96-vjR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="efK-br-xdd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBn-ji-5ZR">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="612"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Isb-6i-S1J">
+                                <rect key="frame" x="171" y="629" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="click"/>
+                                <connections>
+                                    <action selector="clickAction:" destination="geG-mE-LmW" eventType="touchUpInside" id="FiM-m7-FsH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="VBn-ji-5ZR" id="1AI-9r-GYI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nRo-9w-WJ7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1210" y="689"/>
         </scene>
         <!--CreateClips-->
         <scene sceneID="AbU-Im-KA2">
