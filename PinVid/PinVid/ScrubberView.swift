@@ -33,34 +33,34 @@ class ScrubberView: UIView {
         addSubview(rangeSlider)
         
         timerButton = UIButton()
-        timerButton.backgroundColor = UIColor.blue
+        timerButton.backgroundColor = UIColor.black
         timerButton.translatesAutoresizingMaskIntoConstraints = false
         timerButton.setTitle("0:00", for: .normal)
         addSubview(timerButton)
         
         addClip = UIButton()
         addClip.translatesAutoresizingMaskIntoConstraints = false
-        addClip.backgroundColor = UIColor.green
-        addClip.setTitle("Save Clip", for: .normal)
+        addClip.backgroundColor = UIColor.black
+        addClip.setTitle("Save Clip!", for: .normal)
         
         tenSecBack = UIButton()
         tenSecBack.translatesAutoresizingMaskIntoConstraints = false
-        tenSecBack.backgroundColor = UIColor.brown
+        tenSecBack.backgroundColor = UIColor.black
         tenSecBack.setTitle("<<", for: .normal)
         
         oneSecBack = UIButton()
         oneSecBack.translatesAutoresizingMaskIntoConstraints = false
-        oneSecBack.backgroundColor = UIColor.purple
+        oneSecBack.backgroundColor = UIColor.black
         oneSecBack.setTitle("<", for: .normal)
         
         oneSecForward = UIButton()
         oneSecForward.translatesAutoresizingMaskIntoConstraints = false
-        oneSecForward.backgroundColor = UIColor.magenta
+        oneSecForward.backgroundColor = UIColor.black
         oneSecForward.setTitle(">", for: .normal)
         
         tenSecForward = UIButton()
         tenSecForward.translatesAutoresizingMaskIntoConstraints = false
-        tenSecForward.backgroundColor = UIColor.orange
+        tenSecForward.backgroundColor = UIColor.black
         tenSecForward.setTitle(">>", for: .normal)
         
         let buttons:[UIView] = [tenSecBack, oneSecBack, addClip, oneSecForward, tenSecForward]

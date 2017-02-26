@@ -45,7 +45,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         self.view.addSubview(videoView)
         
         scrubberView.translatesAutoresizingMaskIntoConstraints = false
-        scrubberView.backgroundColor = UIColor.cyan
+        scrubberView.backgroundColor = UIColor.black
         self.view.addSubview(scrubberView)
         
         clipsView.translatesAutoresizingMaskIntoConstraints = false
