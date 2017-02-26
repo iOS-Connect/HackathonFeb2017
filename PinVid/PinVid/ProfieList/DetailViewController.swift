@@ -1,4 +1,3 @@
-
 import UIKit
 
 class DetailViewController: UIViewController {
@@ -6,6 +5,8 @@ class DetailViewController: UIViewController {
     var setLoop = false
     lazy var start:Float = { Float(self.montage.clips.first!.start_time!) }()
     lazy var end:Float = { Float(self.montage.clips.first!.end_time!) }()
+
+    var currentID: String!
 
     var montage: Montage!
 
@@ -16,24 +17,24 @@ class DetailViewController: UIViewController {
 
         player.delegate = self
 
-        montage = Montage()
-        montage.author = "Max"
-        montage.yt_url = "https://www.youtube.com/watch?v=xecEV4dSAXE"
-        montage.desc = "This is another test."
-        montage.title = "MAX!"
-        montage.montage_id = "1111AAAA"
-        montage.clips = [Clip(startTime: 10, endTime: 20, thumbNailUrl: nil)]
-
         guard let url = montage.yt_url
         else {
             return
         }
 
-        //player.loadVideo(byURL: url, startSeconds: start, endSeconds: end, suggestedQuality: .highRes)
-        //player.load(withVideoId: "nS-rnG_DGHA")
+        let comp = URLComponents(string: url)!
+        let id = comp.queryItems?.flatMap({ (item) -> String? in
+            if item.name == "v" {
+                return item.value
+            }
+            return nil
+        })
+
+        guard let ids = id, let first = ids.first else { return }
+        currentID = first
+
         let playerVars = ["controls":0,"playsinline":1, "autohide":1, "showinfo":0, "modestbranding":1, "autoplay":1]
-        player.load(withVideoId: "xecEV4dSAXE", playerVars: playerVars)
-        //player.loadVideo(byId: "nS-rnG_DGHA", startSeconds: start, endSeconds: end, suggestedQuality: .small)
+        player.load(withVideoId: currentID, playerVars: playerVars)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -45,7 +46,7 @@ class DetailViewController: UIViewController {
 extension DetailViewController: YTPlayerViewDelegate {
     func playerViewDidBecomeReady(_ playerView: YTPlayerView) {
 
-        playerView.loadVideo(byId: "", startSeconds: start, endSeconds: end, suggestedQuality: .small)
+        playerView.loadVideo(byId: currentID, startSeconds: start, endSeconds: end, suggestedQuality: .small)
         playerView.playVideo()
     }
 
