@@ -42,8 +42,11 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jGd-LH-mSu">
                                                     <rect key="frame" x="0.0" y="0.0" width="221" height="160"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NTK-eI-8vr">
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NTK-eI-8vr">
                                                             <rect key="frame" x="0.0" y="0.0" width="221" height="160"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="221" id="srn-eP-Ja6"/>
+                                                            </constraints>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -72,6 +75,7 @@
                                             <constraint firstItem="5MT-dD-CXa" firstAttribute="top" secondItem="NTK-eI-8vr" secondAttribute="bottom" constant="9" id="zYl-ld-hRn"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="constraint" destination="srn-eP-Ja6" id="cv7-KW-tSd"/>
                                             <outlet property="imageView" destination="NTK-eI-8vr" id="1U2-bc-qcm"/>
                                             <outlet property="title" destination="5MT-dD-CXa" id="h1b-gm-WXD"/>
                                         </connections>
