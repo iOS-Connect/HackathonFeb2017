@@ -170,4 +170,9 @@
                      }];
 }
 
++ (EmailViewController*) instantiate {
+    UIStoryboard* storyboard = [UIStoryboard storyboardWithName:@"Auth" bundle:nil];
+    return [storyboard instantiateViewControllerWithIdentifier:@"EmailViewController"];
+}
+
 @end

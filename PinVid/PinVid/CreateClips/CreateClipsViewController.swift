@@ -73,6 +73,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     }
 
     func addTapped(sender: UIButton) {
+        
         print("done")
     }
     
@@ -80,7 +81,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         
         updateEndTime(to: sender.upperValue)
         updateStartTime(to: sender.lowerValue)
-        
+ 
     }
     
     func updateEndTime(to time:Double) {
@@ -101,7 +102,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
     
     func ready(playerView: YTPlayerView) {
         scrubberView.rangeSlider.maximumValue = playerView.duration()
-        
+
         scrubberView.rangeSlider.upperValue = playerView.duration()
         scrubberView.rangeSlider.lowerValue = 0
         

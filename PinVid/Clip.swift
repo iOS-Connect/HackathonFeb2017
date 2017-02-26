@@ -7,10 +7,11 @@
 import Foundation
 import SwiftyJSON
 
-class Clip {
+class Clip: CustomStringConvertible{
     
     var start_time: Int?
     var end_time: Int?
+    var thumbnailNameId: String = UUID().uuidString
     var thumbnail_url: String?
     
     init(dict: NSDictionary) {
@@ -31,10 +32,10 @@ class Clip {
         self.thumbnail_url = thumbNailUrl
     }
     
-    func toString() -> String {
-        return "Start time: \(start_time)" +
-               " End time: \(end_time)" +
-               " Thumbnail URL: \(thumbnail_url)"
+    var description: String {
+        return "Start time: \(String(describing: start_time))" +
+               " End time: \(String(describing: end_time))" +
+               " Thumbnail URL: \(String(describing: thumbnail_url))"
     }
     
     func toJSON() -> [String: AnyObject] {
