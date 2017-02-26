@@ -15,6 +15,7 @@
 		0D388AEC1E620CAE00502510 /* ReadMe.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0D388AEB1E620CAE00502510 /* ReadMe.txt */; };
 		0D388AF21E622FF300502510 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF01E622FF300502510 /* UIViewController+Alerts.m */; };
 		0D388AF31E622FF300502510 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF11E622FF300502510 /* EmailViewController.m */; };
+		0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF51E6243F100502510 /* FirebaseService.swift */; };
 		4D4CE77DEBE357C886DE0D06 /* Pods_PinVid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */; };
 		8E4C685D241BE0CD5FECE7ED /* Pods_PinVidUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */; };
 		AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58BAB51E621A8B0046EF0F /* Montage.swift */; };
@@ -60,6 +61,7 @@
 		0D388AEF1E622FF300502510 /* UIViewController+Alerts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alerts.h"; sourceTree = "<group>"; };
 		0D388AF01E622FF300502510 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		0D388AF11E622FF300502510 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
+		0D388AF51E6243F100502510 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = Service/FirebaseService.swift; sourceTree = "<group>"; };
 		1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinVidTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A64BD5E90B6C942FFA604C5 /* Pods-PinVid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVid.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVid/Pods-PinVid.release.xcconfig"; sourceTree = "<group>"; };
 		378DA587B95CD522A552A9AA /* Pods-PinVidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidTests/Pods-PinVidTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		0D388AEA1E620C8B00502510 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0D388AF51E6243F100502510 /* FirebaseService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */,
 				0D388AF31E622FF300502510 /* EmailViewController.m in Sources */,
 				AA58BAB81E621A930046EF0F /* Clip.swift in Sources */,
+				0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */,
 				0D388AF21E622FF300502510 /* UIViewController+Alerts.m in Sources */,
 				0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */,
 				0D388AE71E620C7700502510 /* CreateClipsViewController.swift in Sources */,

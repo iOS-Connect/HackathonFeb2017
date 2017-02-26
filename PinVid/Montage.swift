@@ -8,7 +8,7 @@ import Foundation
 import SwiftyJSON
 import Firebase
 
-class Montage {
+class Montage : CustomStringConvertible {
     
     var montage_id: String?
     var yt_url: String?
@@ -19,11 +19,6 @@ class Montage {
     
     
     init() {
-//        self.montage_id = "1234"
-//        self.yt_url = "http://www.yahoo.com"
-//        self.title = "some title"
-//        self.desc = "description"
-//        self.author = "kei"
     }
     
     init(dict: NSDictionary) {
@@ -33,10 +28,10 @@ class Montage {
         self.desc = dict["desc"] as? String
         self.author = dict["author"] as? String
         
-        for (index, clipDict) in dict["clips"] as! NSDictionary {
+        for (index, clipDict) in (dict["clips"] as! NSArray).enumerated() {
             print("\(index) resp: \(clipDict)")
             //instantiate, check if nil, then append
-            clips.append(Clip(json: clipDict as! JSON))
+            clips.append(Clip(dict: clipDict as! NSDictionary))
         }
     }
 
@@ -54,20 +49,21 @@ class Montage {
         }
     }
     
-    func toString() -> String {
-        return "Montage ID: \(montage_id)" +
-               " Youtube URL: \(yt_url)" +
-               " Title: \(title)" +
-               " Description: \(desc)" +
-               " Author: \(author)"
+    var description: String {
+
+        var clipsStr = " "
+        clipsStr = clips.reduce(clipsStr, { (res, clip) -> String in
+            clipsStr += clip.toString()
+            return clipsStr
+        })
+        return "Montage ID: \(String(describing: montage_id))" +
+               " Youtube URL: \(String(describing: yt_url))" +
+               " Title: \(String(describing: title))" +
+               " Description: \(String(describing: desc))" +
+               " Author: \(String(describing: author))" + clipsStr
     }
-    
-    // maybe even have a callback
-    // updates the database
-    func update() {
-        
-    }
-    
+
+
     func toJSON() -> [String: AnyObject] {
         var json = [String: AnyObject]()
         if let montage_id = montage_id {
@@ -85,6 +81,15 @@ class Montage {
         if let author = author {
             json["author"] = author as AnyObject?
         }
+        
+        var clipsDict = [String: AnyObject]()
+        for (index, clip) in clips.enumerated() {
+            //will be saved as arr is "0"...
+            clipsDict["\(index)"] = clip.toJSON() as AnyObject
+        }
+        
+        json["clips"] = clipsDict as AnyObject?
+        
         return json
     }
     
