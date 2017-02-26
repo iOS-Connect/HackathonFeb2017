@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D0633B31E6281FA00D6A16A /* GeneralExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D0633B21E6281FA00D6A16A /* GeneralExtensions.swift */; };
 		0D388ADE1E620BF900502510 /* Auth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D388ADD1E620BF900502510 /* Auth.storyboard */; };
 		0D388AE01E620C0D00502510 /* ProfileList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D388ADF1E620C0D00502510 /* ProfileList.storyboard */; };
 		0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AE31E620C5500502510 /* ProfileListViewController.swift */; };
@@ -16,6 +17,8 @@
 		0D388AF21E622FF300502510 /* UIViewController+Alerts.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF01E622FF300502510 /* UIViewController+Alerts.m */; };
 		0D388AF31E622FF300502510 /* EmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF11E622FF300502510 /* EmailViewController.m */; };
 		0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D388AF51E6243F100502510 /* FirebaseService.swift */; };
+		0DE134EB1E625A47004575BB /* ProfileClipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE134EA1E625A47004575BB /* ProfileClipCell.swift */; };
+		171E1E7B1E62768A00AA007D /* YouTubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 171E1E7A1E62768A00AA007D /* YouTubeViewController.swift */; };
 		4D4CE77DEBE357C886DE0D06 /* Pods_PinVid.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */; };
 		8E4C685D241BE0CD5FECE7ED /* Pods_PinVidUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */; };
 		AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA58BAB51E621A8B0046EF0F /* Montage.swift */; };
@@ -33,6 +36,8 @@
 		F68D49B51E6218B000D1F4AA /* ClipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B41E6218B000D1F4AA /* ClipsView.swift */; };
 		F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B61E6218C100D1F4AA /* ScrubberView.swift */; };
 		F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68D49B81E621C5400D1F4AA /* RangeSlider.swift */; };
+		F68D49BE1E6230D600D1F4AA /* YTPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */; };
+		F68D49C01E6230F900D1F4AA /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F68D49BF1E6230F900D1F4AA /* Assets.bundle */; };
 		F86B560F3A53C5190F59A803 /* Pods_PinVidTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D0633B21E6281FA00D6A16A /* GeneralExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralExtensions.swift; path = Helpers/GeneralExtensions.swift; sourceTree = "<group>"; };
+		0D0633B41E62906E00D6A16A /* YouTubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		0D388ADD1E620BF900502510 /* Auth.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Auth.storyboard; sourceTree = "<group>"; };
 		0D388ADF1E620C0D00502510 /* ProfileList.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = ProfileList.storyboard; path = ProfieList/ProfileList.storyboard; sourceTree = "<group>"; };
 		0D388AE31E620C5500502510 /* ProfileListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileListViewController.swift; path = ProfieList/ProfileListViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +73,8 @@
 		0D388AF01E622FF300502510 /* UIViewController+Alerts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alerts.m"; sourceTree = "<group>"; };
 		0D388AF11E622FF300502510 /* EmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EmailViewController.m; sourceTree = "<group>"; };
 		0D388AF51E6243F100502510 /* FirebaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FirebaseService.swift; path = Service/FirebaseService.swift; sourceTree = "<group>"; };
+		0DE134EA1E625A47004575BB /* ProfileClipCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileClipCell.swift; path = ProfieList/ProfileClipCell.swift; sourceTree = "<group>"; };
+		171E1E7A1E62768A00AA007D /* YouTubeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeViewController.swift; sourceTree = "<group>"; };
 		1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PinVidTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A64BD5E90B6C942FFA604C5 /* Pods-PinVid.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVid.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVid/Pods-PinVid.release.xcconfig"; sourceTree = "<group>"; };
 		378DA587B95CD522A552A9AA /* Pods-PinVidTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PinVidTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PinVidTests/Pods-PinVidTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -96,6 +105,10 @@
 		F68D49B41E6218B000D1F4AA /* ClipsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClipsView.swift; sourceTree = "<group>"; };
 		F68D49B61E6218C100D1F4AA /* ScrubberView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrubberView.swift; sourceTree = "<group>"; };
 		F68D49B81E621C5400D1F4AA /* RangeSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RangeSlider.swift; path = CreateClips/RangeSlider.swift; sourceTree = "<group>"; };
+		F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PinVid-Bridging-Header.h"; sourceTree = "<group>"; };
+		F68D49BC1E6230D600D1F4AA /* YTPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTPlayerView.h; sourceTree = "<group>"; };
+		F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTPlayerView.m; sourceTree = "<group>"; };
+		F68D49BF1E6230F900D1F4AA /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Assets.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,11 +139,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D0633B11E6281D900D6A16A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0D0633B21E6281FA00D6A16A /* GeneralExtensions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		0D388ADB1E620B8A00502510 /* ProfileList */ = {
 			isa = PBXGroup;
 			children = (
 				0D388ADF1E620C0D00502510 /* ProfileList.storyboard */,
 				0D388AE31E620C5500502510 /* ProfileListViewController.swift */,
+				0DE134EA1E625A47004575BB /* ProfileClipCell.swift */,
 			);
 			name = ProfileList;
 			sourceTree = "<group>";
@@ -151,6 +173,7 @@
 		0D388AE51E620C5800502510 /* CreatClips */ = {
 			isa = PBXGroup;
 			children = (
+				0D0633B41E62906E00D6A16A /* YouTubeViewController.swift */,
 				0D388AE61E620C7700502510 /* CreateClipsViewController.swift */,
 				F68D49B61E6218C100D1F4AA /* ScrubberView.swift */,
 				F68D49B81E621C5400D1F4AA /* RangeSlider.swift */,
@@ -185,9 +208,12 @@
 		6BFFDA335E0C46A251A35033 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F68D49BC1E6230D600D1F4AA /* YTPlayerView.h */,
+				F68D49BD1E6230D600D1F4AA /* YTPlayerView.m */,
 				48685FDDBF42BBA8F6FDFBC6 /* Pods_PinVid.framework */,
 				1DBE515F1160EB319A28C48D /* Pods_PinVidTests.framework */,
 				B592FE078C323799ED65038B /* Pods_PinVidUITests.framework */,
+				F68D49BF1E6230F900D1F4AA /* Assets.bundle */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,7 +227,6 @@
 			name = Models;
 			path = ..;
 			sourceTree = "<group>";
-
 		};
 		D139D6EA1E6151C00061F6E8 = {
 			isa = PBXGroup;
@@ -228,6 +253,8 @@
 		D139D6F51E6151C00061F6E8 /* PinVid */ = {
 			isa = PBXGroup;
 			children = (
+				0D0633B11E6281D900D6A16A /* Helpers */,
+				F68D49BB1E6230D500D1F4AA /* PinVid-Bridging-Header.h */,
 				AA58BAB41E621A670046EF0F /* Models */,
 				0D388AEA1E620C8B00502510 /* Services */,
 				0D388AE51E620C5800502510 /* CreatClips */,
@@ -236,6 +263,7 @@
 				D139D6F61E6151C00061F6E8 /* AppDelegate.swift */,
 				D139D6F81E6151C00061F6E8 /* ViewController.swift */,
 				D139D6FA1E6151C00061F6E8 /* Main.storyboard */,
+				171E1E7A1E62768A00AA007D /* YouTubeViewController.swift */,
 				D139D7001E6151C00061F6E8 /* Assets.xcassets */,
 				D139D7021E6151C00061F6E8 /* LaunchScreen.storyboard */,
 				D139D7271E620B4C0061F6E8 /* GoogleService-Info.plist */,
@@ -386,6 +414,7 @@
 				0D388AE01E620C0D00502510 /* ProfileList.storyboard in Resources */,
 				D139D7281E620B4C0061F6E8 /* GoogleService-Info.plist in Resources */,
 				D139D7041E6151C00061F6E8 /* LaunchScreen.storyboard in Resources */,
+				F68D49C01E6230F900D1F4AA /* Assets.bundle in Resources */,
 				D139D7011E6151C00061F6E8 /* Assets.xcassets in Resources */,
 				0D388AEC1E620CAE00502510 /* ReadMe.txt in Resources */,
 				D139D6FC1E6151C00061F6E8 /* Main.storyboard in Resources */,
@@ -552,18 +581,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				F68D49B51E6218B000D1F4AA /* ClipsView.swift in Sources */,
-				0D388AE21E620C3F00502510 /* AuthViewController.swift in Sources */,
 				F68D49B31E62178000D1F4AA /* VideoView.swift in Sources */,
 				D139D6FF1E6151C00061F6E8 /* PinVid.xcdatamodeld in Sources */,
 				D139D6F91E6151C00061F6E8 /* ViewController.swift in Sources */,
+				F68D49BE1E6230D600D1F4AA /* YTPlayerView.m in Sources */,
 				AA58BAB61E621A8B0046EF0F /* Montage.swift in Sources */,
 				D139D6F71E6151C00061F6E8 /* AppDelegate.swift in Sources */,
 				0D388AF31E622FF300502510 /* EmailViewController.m in Sources */,
 				F68D49B91E621C5400D1F4AA /* RangeSlider.swift in Sources */,
 				F68D49B71E6218C100D1F4AA /* ScrubberView.swift in Sources */,
+				171E1E7B1E62768A00AA007D /* YouTubeViewController.swift in Sources */,
 				AA58BAB81E621A930046EF0F /* Clip.swift in Sources */,
 				0D388AF61E6243F100502510 /* FirebaseService.swift in Sources */,
+				0DE134EB1E625A47004575BB /* ProfileClipCell.swift in Sources */,
 				0D388AF21E622FF300502510 /* UIViewController+Alerts.m in Sources */,
+				0D0633B31E6281FA00D6A16A /* GeneralExtensions.swift in Sources */,
 				0D388AE41E620C5500502510 /* ProfileListViewController.swift in Sources */,
 				0D388AE71E620C7700502510 /* CreateClipsViewController.swift in Sources */,
 			);
