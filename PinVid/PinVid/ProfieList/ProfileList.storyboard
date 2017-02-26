@@ -123,23 +123,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elm-BY-ahy">
-                                <rect key="frame" x="165.5" y="323" width="44" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mzc-DM-CyW" customClass="YTPlayerView">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="elm-BY-ahy" firstAttribute="centerX" secondItem="CAt-gO-PDj" secondAttribute="centerX" id="dhO-CP-fzb"/>
-                            <constraint firstItem="elm-BY-ahy" firstAttribute="centerY" secondItem="CAt-gO-PDj" secondAttribute="centerY" id="huX-hW-kjZ"/>
+                            <constraint firstItem="mzc-DM-CyW" firstAttribute="top" secondItem="fKX-l8-Rqi" secondAttribute="bottom" id="V6U-m5-iEX"/>
+                            <constraint firstItem="mzc-DM-CyW" firstAttribute="leading" secondItem="CAt-gO-PDj" secondAttribute="leading" id="fgR-sr-tig"/>
+                            <constraint firstItem="4lm-NG-mmn" firstAttribute="top" secondItem="mzc-DM-CyW" secondAttribute="bottom" id="jgk-Aa-GcC"/>
+                            <constraint firstAttribute="trailing" secondItem="mzc-DM-CyW" secondAttribute="trailing" id="sP8-C3-Xyp"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="player" destination="mzc-DM-CyW" id="TEI-cp-RKE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O6X-Jy-zAH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="747" y="119"/>
+            <point key="canvasLocation" x="746.39999999999998" y="118.29085457271366"/>
         </scene>
     </scenes>
     <resources>
