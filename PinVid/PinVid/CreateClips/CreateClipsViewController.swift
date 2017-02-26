@@ -137,11 +137,13 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
                 print("error: no snapshot img")
                 return
             }
+            montage.yt_url = videoUrl
             
             let clip = Clip(startTime: Int(startTime), endTime: Int(endTime), thumbNailUrl: nil)
             montage.clips.append(clip)
             networkService.saveImage(videoImageData, withName: "\(clip.thumbnailNameId).png", completionHandler: { (downloadUrlStr ,err) in
                 print(downloadUrlStr!)
+                
                 if let durl = downloadUrlStr {
                     clip.thumbnail_url = durl
                     self.networkService.addMontage(montage: self.montage, user_id: self.networkService.userId, completionHandler: { (err) in

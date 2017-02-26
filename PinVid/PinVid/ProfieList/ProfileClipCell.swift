@@ -16,6 +16,7 @@ class ProfileClipCell: UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var title: UILabel!
+    @IBOutlet var userImageView: UIImageView!
     
     var montage: Montage! //must set
     func updateUI() {
@@ -25,5 +26,7 @@ class ProfileClipCell: UICollectionViewCell {
             
         }
         title.text = montage.title
+        self.userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2
+        self.userImageView.clipsToBounds = true
     }
 }
