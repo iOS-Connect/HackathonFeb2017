@@ -48,15 +48,17 @@ class ProfileListViewController: UIViewController, UICollectionViewDelegateFlowL
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return montages.count
     }
-
-
-
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailVC = UIStoryboard(name: "ProfileList", bundle: nil).instantiateViewController(withIdentifier: "DetailViewController")
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 extension ProfileListViewController {
     static func instantiate() -> ProfileListViewController {
-        let storyboard = UIStoryboard(name: "ProfileList", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ProfileListViewController") as! ProfileListViewController
+        let storyboard = UIStoryboard(name: Controllers.ProfileListViewController.storyboardName, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: Controllers.ProfileListViewController.identifier) as! ProfileListViewController
         return vc
     }
 

@@ -19,7 +19,21 @@ extension UIView {
     }
 }
 
-protocol ViewControllerInstantiable {
+enum Controllers: String {
+    //capitalize on purpose to use rawdata as id
+    case ProfileListViewController, EmailViewController, YouTubeViewController, CreateClipsViewController, DetailViewController, ViewController
+    var identifier: String {
+        switch self {
+        default: return self.rawValue
+        }
+    }
     
+    var storyboardName: String {
+        switch self {
+        case .ProfileListViewController, .DetailViewController: return "ProfileList"
+        case .EmailViewController: return "Auth"
+        case .YouTubeViewController, .ViewController: return "Main"
+        case .CreateClipsViewController: return "CreateClips"
+        }
+    }
 }
-
