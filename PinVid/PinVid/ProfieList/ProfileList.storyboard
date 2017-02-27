@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ded-cl-Dq1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12100" systemVersion="16E163f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ded-cl-Dq1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12072"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -58,8 +58,8 @@
                                                         <constraint firstAttribute="bottom" secondItem="NTK-eI-8vr" secondAttribute="bottom" id="vma-BQ-10U"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MT-dD-CXa">
-                                                    <rect key="frame" x="71" y="169" width="142" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5MT-dD-CXa">
+                                                    <rect key="frame" x="71" y="177" width="142" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -76,14 +76,14 @@
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="jGd-LH-mSu" firstAttribute="leading" secondItem="afO-hg-rsl" secondAttribute="leading" id="3t2-BX-R2T"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="5MT-dD-CXa" secondAttribute="bottom" constant="48" id="AJU-X7-yX5"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="5MT-dD-CXa" secondAttribute="bottom" constant="40" id="AJU-X7-yX5"/>
                                             <constraint firstItem="BOi-Wn-Gc3" firstAttribute="top" secondItem="jGd-LH-mSu" secondAttribute="bottom" constant="9" id="EbE-dF-yvs"/>
                                             <constraint firstItem="BOi-Wn-Gc3" firstAttribute="leading" secondItem="afO-hg-rsl" secondAttribute="leadingMargin" id="GEI-Fq-Z0o"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="5MT-dD-CXa" secondAttribute="trailing" id="SaA-Yh-KM8"/>
                                             <constraint firstAttribute="trailing" secondItem="jGd-LH-mSu" secondAttribute="trailing" id="ShF-md-Lv9"/>
                                             <constraint firstItem="jGd-LH-mSu" firstAttribute="top" secondItem="afO-hg-rsl" secondAttribute="top" id="bwq-xC-wH1"/>
                                             <constraint firstItem="5MT-dD-CXa" firstAttribute="leading" secondItem="afO-hg-rsl" secondAttribute="leadingMargin" constant="63" id="e2M-kJ-851"/>
-                                            <constraint firstItem="5MT-dD-CXa" firstAttribute="top" secondItem="NTK-eI-8vr" secondAttribute="bottom" constant="9" id="zYl-ld-hRn"/>
+                                            <constraint firstItem="5MT-dD-CXa" firstAttribute="top" secondItem="NTK-eI-8vr" secondAttribute="bottom" constant="17" id="zYl-ld-hRn"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="constraint" destination="srn-eP-Ja6" id="cv7-KW-tSd"/>

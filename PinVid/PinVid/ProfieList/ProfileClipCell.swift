@@ -25,7 +25,7 @@ class ProfileClipCell: UICollectionViewCell {
             imageView.sd_setImage(with: thumbURL)
             
         }
-        title.text = montage.title
+        title.text = montage.title ?? "A title of video"
         self.userImageView.layer.cornerRadius = self.userImageView.frame.size.width / 2
         self.userImageView.clipsToBounds = true
     }
