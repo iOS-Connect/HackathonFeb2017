@@ -325,6 +325,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D139D71E1E6151C10061F6E8 /* Build configuration list for PBXNativeTarget "PinVid" */;
 			buildPhases = (
+				52A2B05A1E917C90009F45DD /* Warn TODO, FIXME */,
 				90E79199222535D43A63DBAE /* [CP] Check Pods Manifest.lock */,
 				D139D6EF1E6151C00061F6E8 /* Sources */,
 				D139D6F01E6151C00061F6E8 /* Frameworks */,
@@ -479,6 +480,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PinVidTests/Pods-PinVidTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		52A2B05A1E917C90009F45DD /* Warn TODO, FIXME */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Warn TODO, FIXME";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "TAGS=\"TODO:|FIXME:\"\necho \"${SRCROOT}\"\nfind \"${SRCROOT}\" \\! -iregex '.*Pods.*' \\( -name \"*.h\" -or -name \"*.m\" -or -name \"*.swift\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($TAGS).*\\$\" | perl -p -e \"s/($TAGS)/ warning: \\$1/\"";
 		};
 		90E79199222535D43A63DBAE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
