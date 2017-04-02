@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     var window: UIWindow?
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FIRApp.configure()
@@ -54,7 +53,7 @@ extension AppDelegate {
             UserDefaults.standard.synchronize()
         }
     }
-    
+
     func presentCorrectViewController(user: FIRUser?) {
         let vc: UIViewController
         if let _ = user {
@@ -65,8 +64,6 @@ extension AppDelegate {
         (window?.rootViewController as! UINavigationController).pushViewController(vc, animated: false)
     }
 }
-
-
 
 @objc protocol AuthDelegate {
     func didLogin(_ user: FIRUser)
