@@ -25,7 +25,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         updateWindow(forUser: FIRAuth.auth()?.currentUser)
         return true
     }
-    
+
+    // TODO: Can we have our Core Data Object , just listen for the Notification?
+    // Instead of having this here, https://developer.apple.com/reference/foundation/nsnotification.name/1623061-uiapplicationwillterminate
+    // Filed github issue: https://github.com/iOS-Connect/HackathonFeb2017/issues/42
     func applicationWillTerminate(_ application: UIApplication) {
         CoreDataManager.sharedInstance.saveContext()
     }
