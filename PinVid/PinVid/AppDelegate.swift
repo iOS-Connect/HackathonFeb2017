@@ -76,6 +76,9 @@ extension AppDelegate: AuthDelegate {
 //        testSaveAndFetch(user)
         updateWindow(forUser: FIRAuth.auth()?.currentUser)
     }
+}
+
+extension AppDelegate {
     func testSaveAndFetch(_ user: FIRUser) {
         let montage1 = Montage()
         montage1.author = "Kei Sakaguchi"
