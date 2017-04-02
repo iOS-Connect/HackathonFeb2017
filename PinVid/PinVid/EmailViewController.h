@@ -16,8 +16,5 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 @interface EmailViewController : UIViewController
-+ (EmailViewController*) instantiate;
 @end
