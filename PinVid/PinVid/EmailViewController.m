@@ -30,6 +30,7 @@
 
 -(void)viewDidLoad {
     [super viewDidLoad];
+    // FIXME: Tight Coupling, We should pass in an object to Play the AuthDelegate Role
     self.delegate = (id<AuthDelegate>)[UIApplication.sharedApplication delegate];
 }
 
@@ -49,6 +50,9 @@
                                          [self showMessagePrompt:error.localizedDescription];
                                          return;
                                      }
+                                     // FIXME: Should this VC Know that it's in a Nav Stack?
+                                     // Perhaps some parent should be doing the dismissal.
+                                     // Probably the same object that handles the `didLogin:`
                                      [self.navigationController popViewControllerAnimated:YES];
                                      [self.delegate didLogin: user];
                                  }];
@@ -160,6 +164,9 @@
                                return;
                            }
                            NSLog(@"%@ created", user.email);
+                           // FIXME: Again probably soem parent should be doing the dismissal
+                           // Perhaps handling a creation event, Oh we could even pass along the new user!
+                           // `[delegate didCreateNewAccountForUser: FIRUser]`
                            [self.navigationController popViewControllerAnimated:YES];
                        }];
                        // [END_EXCLUDE]
