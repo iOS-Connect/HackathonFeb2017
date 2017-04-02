@@ -102,7 +102,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         if scrubberView.prevEndTime != time {
             scrubberView.prevEndTime = time
             videoView.player.seek(toSeconds: Float(time - 3.0), allowSeekAhead: true)
-            print("updated end time to \(scrubberView.prevEndTime) - 3 sec")
+            print("updated end time to \(String(describing: scrubberView.prevEndTime)) - 3 sec")
         }
     }
     
@@ -110,7 +110,7 @@ class CreateClipsViewController: UIViewController, VideoViewDelegate {
         if scrubberView.prevStartTime != time {
             scrubberView.prevStartTime = time
             videoView.player.seek(toSeconds: Float(time), allowSeekAhead: true)
-            print("updated start time to \(scrubberView.prevStartTime)")
+            print("updated start time to \(String(describing: scrubberView.prevStartTime))")
         }
     }
     

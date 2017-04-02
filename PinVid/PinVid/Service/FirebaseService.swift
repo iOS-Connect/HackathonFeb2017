@@ -73,7 +73,7 @@ extension FirebaseService {
         let _ = childRef.put(imageData, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
                 print(error!)
-                completionHandler(nil, error as! NSError)
+                completionHandler(nil, error! as NSError)
                 return
             }
             // Metadata contains file metadata such as size, content-type, and download URL.

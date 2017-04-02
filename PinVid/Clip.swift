@@ -15,8 +15,8 @@ class Clip: CustomStringConvertible{
     var thumbnail_url: String?
     
     init(dict: NSDictionary) {
-        self.start_time = dict["start_time"] as! Int
-        self.end_time = dict["end_time"] as! Int
+        self.start_time = dict["start_time"] as? Int
+        self.end_time = dict["end_time"] as? Int
         self.thumbnail_url = dict["thumbnail_url"] as? String
     }
     
